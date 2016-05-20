@@ -12,13 +12,16 @@ angular.module('barrick')
                     url: 'http://192.168.3.153:3000/api/'+type
                 });
             },
-            addFunction : function(elements,index,type){
+            addFunction : function(elements,index,type, metaData){
                 var modalInstance = $uibModal.open({
                     templateUrl: 'myModalContent.html',
                     controller: ['$scope', function ($scope) {
                         $scope.modalTitle = (index == -1) ? 'Add '+type : 'Edit '+type;
 
                         $scope.myelement = {};
+
+                        $scope.metaData = metaData;
+                        console.log(metaData);
 
                         if(index !== -1){
                             $scope.myelement = {
@@ -32,6 +35,9 @@ angular.module('barrick')
                                     $scope.myelement.editemployeeid = elements[index].docs.employeeID;
                                     $scope.myelement.editfirstname = elements[index].docs.firstname;
                                     $scope.myelement.editlastname = elements[index].docs.lastname;
+                            }else if(type == "material_destination_relation"){
+                                $scope.myelement.editMaterial = elements[index].docs.material;
+                                $scope.myelement.editDestination = elements[index].docs.destination;
                             }else{
                                     $scope.myelement._id = elements[index]._id;
                                     $scope.myelement.rev = elements[index].rev;
@@ -54,6 +60,19 @@ angular.module('barrick')
                                         "lastname" : $scope.myelement.editlastname,
                                         "employeeID" : $scope.myelement.editemployeeid,
                                         "type" : type
+                                    };
+                                }else if(type == "material_destination_relation") {
+                                    var material = JSON.parse($scope.myelement.material);
+                                    var destination = JSON.parse($scope.myelement.destination);
+                                    var materialData = material.docs;
+                                    materialData.id = material._id;
+                                    var destinationData = destination.docs;
+                                    destinationData.id = destination._id;
+                                    data = {
+                                        "material": materialData,
+                                        "destination": destinationData,
+                                        "type": type,
+                                        "m_d_relation": materialData.id + '_' + destinationData.id
                                     };
                                 }else{
                                     data = {
@@ -97,6 +116,8 @@ angular.module('barrick')
                                         "employeeID" : $scope.myelement.editemployeeid,
                                         "type" : type
                                     };
+                                }else if(type == "material_destination_relation") {
+                                    data = {};
                                 }else{
                                     data = {
                                         "title" : $scope.myelement.edittitle,
@@ -134,6 +155,16 @@ angular.module('barrick')
                         };
                     }]
                 });
+            },
+            getDropDownsForMDRelation : function () {
+                return $http.get('http://192.168.3.153:3000/api/get/allMD')
+                    .then(function (mdDropDowns) {
+                        console.log(mdDropDowns);
+                        return mdDropDowns.data;
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                    });
             }
         }
     }]);

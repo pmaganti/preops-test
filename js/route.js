@@ -28,8 +28,8 @@ angular.module('barrick')
                 "cache": false
             }).state("mdRelation", {
                 "url": "/mdRelation",
-                //templateUrl: 'templates/mat-dest.html',
-                //controller: 'MDRelationController',
+                templateUrl: 'templates/mat-dest.html',
+                controller: 'MDRelationController',
                 "cache": false
             }).state("loaders", {
                 "url": "/loaders",
