@@ -33,7 +33,7 @@
                      margin-top: 22px;">
 
                 <label><span class="white">SEARCH: </span>
-                    <input type="search" class="border0" style="padding: 5px 32px 5px 5px;" placeholder="" aria-controls="example"></label>
+                    <input type="search" ng-model="searchKeyword" class="border0" style="padding: 5px 32px 5px 5px;" placeholder="" aria-controls="example"></label>
 
             </div>
 
@@ -48,9 +48,9 @@
 
                     <table class="grey table-padd">
                         <tr>
-                            <th width="25%">element Id</th>
-                            <th width="25%">Title</th>
+                            <th width="25%">Heading</th>
                             <th width="25%">State</th>
+                            <th width="25%"></th>
                             <th width="25%"></th>
                         </tr>
 
@@ -65,9 +65,8 @@
 
                         <tr ng-repeat="element in elements | filter : searchKeyword">
                             <td>{{element.docs.title}}</td>
-                            <td>{{element.docs.active}}</td>
+                            <td>{{( element.docs.active == true ) ? 'Active' : 'Inactive'}}</td>
                             <td class="flex1">
-                            <td>
                                 <button class="edit-btn" ng-click="addOrEdit(elements,elements.indexOf(element))">Edit</button>
                                 <button class="edit-btn" ng-click="delete(elements,elements.indexOf(element))">Delete</button>
                             </td>
