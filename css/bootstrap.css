@@ -3870,8 +3870,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
-  text-decoration: none;
-  background-color: #eee;
+  /*text-decoration: none;*/
+  /*background-color: #eee;*/
 }
 .nav > li.disabled > a {
   color: #777;
@@ -4497,12 +4497,13 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse .navbar-nav > li > a:focus {
   /*color: #000!important;*/
   /*background-color: #E9C96A!important;*/
+    text-decoration: none;
 }
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
-  /*color: #000;*/
-  /*background-color: #E9C96A;*/
+  color: #000;
+  background-color: #E9C96A;
 }
 .navbar-inverse .navbar-nav > .disabled > a,
 .navbar-inverse .navbar-nav > .disabled > a:hover,

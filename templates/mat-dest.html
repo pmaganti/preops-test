@@ -32,8 +32,8 @@
             <div class="col-lg-4 pad-56 col-md-5 col-sm-1" style="
                      margin-top: 22px;">
 
-                <label><span class="white">SEARCH: </span>
-                    <input type="search" class="border0 search-btn" placeholder="" aria-controls="example"></label>
+                <label><span class="white">SEARCH <span class="rep-search-space">:</span></span>
+                    <input type="search" ng-model="searchKeyword" class="border0 search-btn" placeholder="" aria-controls="example"></label>
 
             </div>
 
@@ -58,8 +58,8 @@
                             <td>{{element.docs.destination.title}}</td>
                             <td></td>
                             <td class="flex1">
-                                <button class="edit-btn">Edit</button>
-                                <button class="edit-btn">Delete</button></td>
+                                <!--<button class="edit-btn">Edit</button>-->
+                                <button class="edit-btn" ng-click="delete(elements,elements.indexOf(element))">Delete</button>
                         </tr>
                     </table>
                 </div>
@@ -86,6 +86,14 @@
 
     </div>
     <!-- /.container-fluid -->
+
+    <!--Delete Modal -->
+    <script type="text/ng-template" id="myModalDelete.html">
+        <my-modal>
+            <div class="deleteClass">Are you sure, you want to delete?</div>
+        </my-modal>
+    </script>
+    <!--delete modal end-->
 
 </div>
 <!-- /#page-wrapper -->

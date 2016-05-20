@@ -10,20 +10,17 @@ angular.module('LoaderModule',[])
         $scope.elements = [];
 
         myService.getAllData('loader').then(function successCallback(response) {
-            //console.log(response.data);
             $scope.elements = response.data;
 
         }, function errorCallback(response) {
             console.log("error",response);
         });
 
-        $scope.delete = function(elements,deleteIndex){
-            console.log('delete',elements[deleteIndex]);
-            elements.splice(deleteIndex,1);
+        $scope.delete = function(elements,index){
+            myService.deleteFunction(elements,index,'loader');
         };
 
         $scope.addOrEdit = function(elements,index){
-            //======= index = -1 indicates add, otherwise edit =======
             myService.addFunction(elements,index,'loader');
         };
 

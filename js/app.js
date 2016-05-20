@@ -9,4 +9,18 @@ angular.module('barrick',['ui.router',
                           'LoaderModule',
                           'DestinationModule',
                           'TruckModule',
-                          'HeadingModule']);
+                          'HeadingModule',
+                          'ReportModule'])
+
+    .controller('PanelController', function (){
+        this.tab = 1;
+        this.setTab = function(tabValue){
+            this.tab = tabValue;
+        };
+        this.isTabSelected = function(checkTab){
+            return this.tab === checkTab;
+        }
+    });
+
+
+

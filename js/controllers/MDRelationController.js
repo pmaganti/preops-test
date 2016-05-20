@@ -22,9 +22,10 @@ angular.module('barrick')
 			});
 
 		$scope.addOrEdit = function(elements, index) {
-			//======= index = -1 indicates add, otherwise edit =======
-			console.log("before calling function");
 			myService.addFunction(elements, index, 'material_destination_relation', $scope.mds);
-			console.log("after calling function");
 		};
+
+        $scope.delete = function(elements,index){
+            myService.deleteFunction(elements,index,'material_destination_relation');
+        };
 	}]);

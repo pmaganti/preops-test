@@ -9,7 +9,6 @@ angular.module('UserModule',[])
         $scope.elements = [];
 
         myService.getAllData('user').then(function successCallback(response) {
-            //console.log(response.data);
             $scope.elements = response.data;
 
         }, function errorCallback(response) {
@@ -17,16 +16,12 @@ angular.module('UserModule',[])
         });
 
 
-        $scope.delete = function(users,deleteIndex){
-            console.log('delete',users[deleteIndex]);
-            users.splice(deleteIndex,1);
+        $scope.delete = function(elements,index){
+            myService.deleteFunction(elements,index,'user');
         };
 
         $scope.addOrEdit = function(elements,index){
-            //======= index = -1 indicates add, otherwise edit =======
-            console.log("before calling function");
             myService.addFunction(elements,index,'user');
-            console.log("after calling function");
         };
 
     }])

@@ -43,8 +43,8 @@ angular.module('barrick')
                 "cache": false
             }).state("reports", {
                 "url": "/reports",
-                //templateUrl: 'templates/reports.html',
-                //controller: 'ReportController',
+                templateUrl: 'templates/reports.html',
+                controller: 'ReportController',
                 "cache": false
             })
     }]);

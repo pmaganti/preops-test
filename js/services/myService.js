@@ -4,12 +4,40 @@
 
 angular.module('barrick')
     .factory('myService',['$http','$uibModal',function($http,$uibModal){
-        var url = "";
+        var url = 'http://192.168.3.153:3000/api/';
         return {
             getAllData : function(type){
                 return $http({
                     method: 'GET',
-                    url: 'http://192.168.3.153:3000/api/'+type
+                    url: url+type
+                });
+            },
+            deleteFunction : function(elements,index,type){
+                var element = elements[index];
+                var modalInstance = $uibModal.open({
+                    templateUrl: 'myModalDelete.html',
+                    controller:  ['$scope', function ($scope) {
+                        $scope.modalTitle = '';
+                        $scope.ok = function () {
+                            $http({
+                                method: 'DELETE',
+                                url: url+type+'/'+element._id,
+                                headers: {
+                                    "If-Match" : element.rev
+                                }
+                            }).then(function successCallback(response) {
+                                elements.splice(index,1);
+                            }, function errorCallback(response) {
+                                console.log("error",response);
+                                // called asynchronously if an error occurs
+                                // or server returns response with an error status.
+                            });
+                            modalInstance.close();
+                        };
+                        $scope.cancel = function () {
+                            modalInstance.dismiss('cancel');
+                        };
+                    }]
                 });
             },
             addFunction : function(elements,index,type, metaData){
@@ -21,8 +49,8 @@ angular.module('barrick')
                         $scope.myelement = {};
 
                         $scope.metaData = metaData;
-                        console.log(metaData);
 
+                        //======= index = -1 indicates add, otherwise edit =======
                         if(index !== -1){
                             $scope.myelement = {
                                 _id: elements[index]._id,
@@ -82,13 +110,12 @@ angular.module('barrick')
                                 }
                                 $http({
                                     method: 'PUT',
-                                    url: 'http://192.168.3.153:3000/api/'+type,
+                                    url: url+type,
                                     headers: {
                                         "Content-Type" : "application/json"
                                     },
                                     data: data
                                 }).then(function successCallback(response) {
-                                    console.log("add success",response.data);
                                     elements.push({
                                         _id : response.data.id,
                                         rev : response.data.rev,
@@ -102,7 +129,6 @@ angular.module('barrick')
 
                             } else {
                                 //====== update =========
-                                console.log("update");
                                 if(type == "heading"){
                                     data = {
                                         "title" : $scope.myelement.edittitle,
@@ -127,14 +153,13 @@ angular.module('barrick')
                                 }
                                 $http({
                                     method: 'PUT',
-                                    url: 'http://192.168.3.153:3000/api/'+type+'/'+$scope.myelement._id,
+                                    url: url+type+'/'+$scope.myelement._id,
                                     headers: {
                                         "Content-Type" : "application/json",
                                         "If-Match" : $scope.myelement.rev
                                     },
                                     data: data
                                 }).then(function successCallback(response) {
-                                    console.log("update success",response.data);
                                     //==== TODO : Handle the error if obtained like following
                                     // {error: "conflict", reason: "Document revision conflict"}
                                     elements[index].rev = response.data.rev;
@@ -150,16 +175,14 @@ angular.module('barrick')
                         };
 
                         $scope.cancel = function () {
-                            console.log('on cancel');
                             modalInstance.dismiss('cancel');
                         };
                     }]
                 });
             },
             getDropDownsForMDRelation : function () {
-                return $http.get('http://192.168.3.153:3000/api/get/allMD')
+                return $http.get(url+'get/allMD')
                     .then(function (mdDropDowns) {
-                        console.log(mdDropDowns);
                         return mdDropDowns.data;
                     })
                     .catch(function (err) {
