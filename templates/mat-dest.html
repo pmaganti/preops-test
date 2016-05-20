@@ -1,0 +1,118 @@
+<div id="page-wrapper col-lg-12">
+
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="tab-hd">
+                <div class="col-lg-6 pad-0">Heading</div>
+                <div class="pull-right switch">
+                    <img class="switch-img" src="images/switch.png">
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-3 col-sm-12 clearfix" style="  padding-left: 56px;
+    padding-top: 22px;">
+
+                <span class="white">Show</span>
+                <select>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <span class="white">Entries</span>
+            </div>
+
+            <div class="col-lg-4 pad-56 col-md-5 col-sm-1" style="
+                     margin-top: 22px;">
+
+                <label><span class="white">SEARCH <span class="rep-search-space">:</span></span>
+                    <input type="search" ng-model="searchKeyword" class="border0 search-btn" placeholder="" aria-controls="example"></label>
+
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-sm-12 pull-right pad-56" style="
+                     margin-top: 22px;">
+                <button class="add-btn black" ng-click="addOrEdit(elements,-1)">ADD NEW</button>
+            </div>
+            <!--table starts-->
+            <div class="table-div">
+                <div class="col-lg-12">
+
+
+                    <table class="grey table-padd">
+                        <tr>
+                            <th width="25%">Material</th>
+                            <th width="25%">Destination</th>
+                            <th width="25%"></th>
+                            <th width="25%"></th>
+                        </tr>
+                        <tr ng-repeat="element in elements">
+                            <td>{{element.docs.material.title}}</td>
+                            <td>{{element.docs.destination.title}}</td>
+                            <td></td>
+                            <td class="flex1">
+                                <!--<button class="edit-btn">Edit</button>-->
+                                <button class="edit-btn" ng-click="delete(elements,elements.indexOf(element))">Delete</button>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!--table ends-->
+
+            <div class="pagination-div pull-right">
+                <ul class="pagination">
+                    <li><a href="#">PREV</a></li>
+                    <li><a class="active" href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">NEXT</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+        <!-- /.row  -->
+
+    </div>
+    <!-- /.container-fluid -->
+
+    <!--Delete Modal -->
+    <script type="text/ng-template" id="myModalDelete.html">
+        <my-modal>
+            <div class="deleteClass">Are you sure, you want to delete?</div>
+        </my-modal>
+    </script>
+    <!--delete modal end-->
+
+</div>
+<!-- /#page-wrapper -->
+<!-- Modal -->
+<script type="text/ng-template" id="myModalContent.html">
+    <my-modal>
+        <form name="myForm">
+            <div class="form-group">
+                <select type="number" ng-model="myelement.material" class="form-control" required>
+                    <option ng-repeat="material in metaData.materials" value="{{material}}"> {{material.docs.title}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select type="number" ng-model="myelement.destination" class="form-control" required>
+                    <option ng-repeat="destination in metaData.destinations" value="{{destination}}"> {{destination.docs.title}}</option>
+                </select>
+            </div>
+        </form>
+    </my-modal>
+</script>
+
+<!-- End Modal -->

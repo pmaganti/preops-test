@@ -1,0 +1,11 @@
+
+<div class="modal-header">
+    <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">{{modalTitle}}</h4>
+</div>
+<div class="modal-body">
+    <ng-transclude></ng-transclude>
+</div>
+<div class="modal-footer">
+    <button type="button" class="save-btn" ng-click="ok()">{{(modalTitle == '') ? 'ok' : 'save'}}</button>
+</div>
