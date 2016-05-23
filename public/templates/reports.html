@@ -14,41 +14,18 @@
 <!--search and clear-->
                 <div class="report-page">
                 <!--<div class="reports-tp-pad">-->
-                <div class="col-lg-4 col-md-4 col-sm-4" >
-                    <div id="type" class="dropdown right">
-                        <a data-target="#" href="page.html" data-toggle="dropdown" class="type-btn dropdown-toggle">Type <b class="caret type-caret"></b></a>
-                        <ul class="dropdown-menu left9" data-ng-model="option1">
-                            <li><a href="#">Heading</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Material</a>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Destination</a>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Loader</a>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Truck</a>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Heading</a>
-                            <li role="separator" class="divider"></li>
-
-                                </ul>
+                    <div class="col-lg-4 col-md-4 col-sm-4" >
+                        <div id="type" class="dropdown right">
+                            <select title="Type" ng-model="selectedPrimary" ng-options="item for item in primary" ng-change="onPrimaryChange()">
+                            </select>
                         </div>
-
                     </div>
 
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div id="value" class="dropdown">
-                            <a data-target="#" href="page.html" data-toggle="dropdown" class="type-btn dropdown-toggle">Value<b class="caret type-caret"></b></a>
-                            <ul class="dropdown-menu left9">
-                                <li><a href="#"><img class="search-drpdwn" src="images/search.png"><input class="border0" type="text" name="search" placeholder="Search.."></a></li>
-                                <li role="separator" class="divider"></li>
-
-                                <li><a href="#">TRH0006</a>
-                                <li role="separator" class="divider"></li>
-
-                            </ul>
+                                <select title="Value" ng-model="selectedSecondary" ng-options="item1 for item1 in secondary" ng-change="onSecondaryChange()">
+                                </select>
                         </div>
-
                     </div>
 
                     <div class="col-lg-2 col-md-2 col-sm-2">
@@ -113,7 +90,7 @@
 
                             </tr>
 
-                            <tr>
+                            <tr ng-repeat="element in elements">
                                 <td>LOA005</td>
                                 <td>CA3905_PT_CR545</td>
                                 <td>TRH0002</td>
@@ -121,38 +98,14 @@
                                 <td>SEGRATED OXIDE STOCKPILE</td>
                                 <td>3</td>
                             </tr>
-                            <tr>
+                            <!--<tr>
                                 <td>LOA005</td>
                                 <td>CA3905_PT_CR545</td>
                                 <td>TRH0002</td>
                                 <td>OXIDE</td>
                                 <td>SEGRATED OXIDE STOCKPILE</td>
                                 <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>LOA005</td>
-                                <td>CA3905_PT_CR545</td>
-                                <td>TRH0002</td>
-                                <td>OXIDE</td>
-                                <td>SEGRATED OXIDE STOCKPILE</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>LOA005</td>
-                                <td>CA3905_PT_CR545</td>
-                                <td>TRH0002</td>
-                                <td>OXIDE</td>
-                                <td>SEGRATED OXIDE STOCKPILE</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>LOA005</td>
-                                <td>CA3905_PT_CR545</td>
-                                <td>TRH0002</td>
-                                <td>OXIDE</td>
-                                <td>SEGRATED OXIDE STOCKPILE</td>
-                                <td>3</td>
-                            </tr>
+                            </tr>-->
                         </table>
                     </div>
                 </div>

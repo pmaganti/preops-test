@@ -4,7 +4,8 @@
 
 angular.module('barrick')
     .factory('myService',['$http','$uibModal',function($http,$uibModal){
-        var url = 'http://192.168.3.153:3000/api/';
+        //var url = 'http://192.168.3.153:3000/api/';
+        var url = 'http://localhost:3001/api/';
         return {
             getAllData : function(type){
                 return $http({

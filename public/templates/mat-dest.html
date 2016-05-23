@@ -53,7 +53,7 @@
                             <th width="25%"></th>
                             <th width="25%"></th>
                         </tr>
-                        <tr ng-repeat="element in elements">
+                        <tr ng-repeat="element in elements | filter : searchKeyword">
                             <td>{{element.docs.material.title}}</td>
                             <td>{{element.docs.destination.title}}</td>
                             <td></td>
