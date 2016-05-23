@@ -99,8 +99,8 @@
 <!-- /#page-wrapper -->
 <!-- Modal -->
 <script type="text/ng-template" id="myModalContent.html">
-    <my-modal>
-        <form name="myForm">
+    <form name="myForm" novalidate>
+        <my-modal>
             <div class="form-group">
                 <select type="number" ng-model="myelement.material" class="form-control" required>
                     <option ng-repeat="material in metaData.materials" value="{{material}}"> {{material.docs.title}}</option>
@@ -111,8 +111,9 @@
                     <option ng-repeat="destination in metaData.destinations" value="{{destination}}"> {{destination.docs.title}}</option>
                 </select>
             </div>
-        </form>
     </my-modal>
+    </form>
+
 </script>
 
 <!-- End Modal -->

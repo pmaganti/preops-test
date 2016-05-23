@@ -110,8 +110,8 @@
 
     <!-- Modal -->
     <script type="text/ng-template" id="myModalContent.html">
+        <form name="myForm" novalidate>
         <my-modal>
-            <form name="myForm" novalidate>
                 <div class="form-group">
                     <input type="number" string-to-number ng-model="myelement.editemployeeid" class="form-control rmv-brdr" placeholder="Employee ID" required>
                 </div>
@@ -121,8 +121,8 @@
                 <div class="form-group">
                     <input type="text" ng-model="myelement.editlastname" class="form-control rmv-brdr" placeholder="Last name" required>
                 </div>
-            </form>
         </my-modal>
+        </form>
     </script>
 
     <!-- End Modal -->
