@@ -6,7 +6,7 @@
             <!-- Page Heading -->
             <div class="row">
                 <div class="tab-hd">
-                    <div class="col-lg-6 col-md-4 pad-0">Heading</div>
+                    <div class="col-lg-6 col-md-4 pad-0">REPORTS</div>
                     <div class="pull-right switch">
                         <img class="switch-img" src="images/switch.png">
                     </div>
@@ -16,14 +16,16 @@
                 <!--<div class="reports-tp-pad">-->
                     <div class="col-lg-4 col-md-4 col-sm-4" >
                         <div id="type" class="dropdown right">
-                            <select title="Type" ng-model="selectedPrimary" ng-options="item for item in primary" ng-change="onPrimaryChange()">
+                            <select class="width200" title="Type" ng-model="selectedPrimary" ng-options="item for item in primary" ng-change="onPrimaryChange()">
+                                <option value="">Type</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div id="value" class="dropdown">
-                                <select title="Value" ng-model="selectedSecondary" ng-options="item1 for item1 in secondary" ng-change="onSecondaryChange()">
+                                <select class="width200" title="Value" ng-model="selectedSecondary" ng-options="item1 for item1 in secondary" ng-change="onSecondaryChange()">
+                                    <option value="">Value</option>
                                 </select>
                         </div>
                     </div>
@@ -47,7 +49,7 @@
 
                 <div class="col-lg-6 col-md-4 col-sm-4 reports-tp-pad1">
 
-                    <span class="white">Show</span>
+                    <!--<span class="white">Show</span>
                     <select>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -60,7 +62,7 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
-                    <span class="white">Entries</span>
+                    <span class="white">Entries</span>-->
                 </div>
 
                 <div class="col-lg-6 col-md-8 col-sm-8" style="
@@ -111,7 +113,7 @@
                 </div>
                 <!--table ends-->
 
-                <div class="pagination-div pull-right">
+                <!--<div class="pagination-div pull-right">
                     <ul class="pagination">
                         <li><a href="#">PREV</a></li>
                         <li><a class="active" href="#">1</a></li>
@@ -123,7 +125,7 @@
                         <li><a href="#">7</a></li>
                         <li><a href="#">NEXT</a></li>
                     </ul>
-                </div>
+                </div>-->
 
 
 
