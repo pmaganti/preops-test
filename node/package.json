@@ -1,0 +1,17 @@
+{
+  "name": "BarrickWeb",
+  "version": "1.0.0",
+  "description": "A Dashboard application to manage several data elements and view reports",
+  "author": "Pa Maganti",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "connect": "^3.4.1",
+    "couchbase": "^2.0.8",
+    "express": "^4.13.0",
+    "node-forge": "^0.6.30",
+    "querystring": "^0.2.0",
+    "request": "^2.72.0",
+    "uuid": "^2.0.1"
+  }
+}

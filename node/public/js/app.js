@@ -28,7 +28,7 @@ angular.module("recordsapp", ["ui.router"])
                 url: "/api/getAll"
             }
         )
-        .success(function(result) {
+        .success(function(result) {abcd = result;console.log(result)
             for(var i = 0; i < result.length; i++) {
                 $scope.items[result[i].id] = result[i];
             }
@@ -83,7 +83,9 @@ angular.module("recordsapp", ["ui.router"])
                 data: {
                     firstname: firstname,
                     lastname: lastname,
-                    email: email,
+                   // employeeID: email,
+                    email : email,
+                    type : 'user',
                     document_id: $stateParams.documentId
                 }
             }

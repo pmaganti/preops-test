@@ -13,7 +13,7 @@
         <tr ng-repeat="(key, value) in items">
             <td>{{value.firstname}}</td>
             <td>{{value.lastname}}</td>
-            <td>{{value.email}}</td>
+            <td>{{value.employeeID}}</td>
             <td><a href="" ui-sref="item({documentId: key})">edit</a> | <a href="" ng-click="delete(key)">delete</a></td>
         </tr>
     </tbody>
