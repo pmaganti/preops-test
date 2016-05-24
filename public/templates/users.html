@@ -1,4 +1,4 @@
-<div id="page-wrapper col-lg-12">
+<div id="page-wrapper col-lg-12" class="dummy">
 
     <div class="container-fluid">
         <!-- Page Heading -->
@@ -6,7 +6,7 @@
             <div class="tab-hd">
                 <div class="col-lg-6 pad-0">USERS</div>
                 <div class="pull-right switch">
-                    <img class="switch-img" src="images/switch.png">
+                    <a href="#/logout"> <img class="switch-img" src="images/switch.png"></a>
                 </div>
             </div>
 
@@ -111,7 +111,7 @@
     <!-- Modal -->
     <script type="text/ng-template" id="myModalContent.html">
         <form name="myForm" novalidate>
-        <my-modal>
+        <my-modal style="z-index:9999;">
                 <div class="form-group">
                     <input type="number" string-to-number ng-model="myelement.editemployeeid" class="form-control rmv-brdr" placeholder="Employee ID" required>
                 </div>
