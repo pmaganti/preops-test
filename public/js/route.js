@@ -42,7 +42,7 @@ angular.module('barrick')
                 controller: 'TruckController',
                 "cache": false
             }).state("reports", {
-                "url": "/reports",
+                "url": "/reports/:interval",
                 templateUrl: 'templates/reports.html',
                 controller: 'ReportController',
                 "cache": false

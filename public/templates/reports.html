@@ -93,12 +93,12 @@
                             </tr>
 
                             <tr ng-repeat="element in elements">
-                                <td>LOA005</td>
-                                <td>CA3905_PT_CR545</td>
-                                <td>TRH0002</td>
-                                <td>OXIDE</td>
-                                <td>SEGRATED OXIDE STOCKPILE</td>
-                                <td>3</td>
+                                <td>{{element.docs.loader}}</td>
+                                <td>{{element.docs.header}}</td>
+                                <td>{{element.docs.truck}}</td>
+                                <td>{{element.docs.material}}</td>
+                                <td>{{element.docs.destination}}</td>
+                                <td>{{element.docs.count}}</td>
                             </tr>
                             <!--<tr>
                                 <td>LOA005</td>

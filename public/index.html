@@ -84,12 +84,12 @@
                         <a class="pad-60" href ui-sref="trucks" ng-click="panel.setTab(7)">Trucks</a>
                     </li>
                     <li ng-class="{active : panel.isTabSelected(8)}" class="gradient">
-                        <a class="pad-60" href ui-sref="reports" ng-click="panel.setTab(8)" id="menu1"> <!--data-toggle="dropdown"-->Reports</a>
-                        <!--<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                            <li role="presentation"><a class="pad-60" role="menuitem" tabindex="-1" href>Daily</a></li>
-                            <li role="presentation"><a class="pad-60" role="menuitem" tabindex="-1" href>Weekly</a></li>
-                            <li role="presentation"><a class="pad-60" role="menuitem" tabindex="-1" href>Monthly</a></li>
-                        </ul>-->
+                        <a class="pad-60" href id="menu1" ng-click="panel.setTab(8)" data-toggle="dropdown">Reports</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            <li role="presentation"><a class="pad-60" role="menuitem" tabindex="-1" href ui-sref="reports({interval: 'daily'})">Daily</a></li>
+                            <li role="presentation"><a class="pad-60" role="menuitem" tabindex="-1" href ui-sref="reports({interval: 'weekly'})">Weekly</a></li>
+                            <li role="presentation"><a class="pad-60" role="menuitem" tabindex="-1" href ui-sref="reports({interval: 'monthly'})">Monthly</a></li>
+                        </ul>
 
                     </li>
 

@@ -189,6 +189,12 @@ angular.module('barrick')
                     .catch(function (err) {
                         console.log(err);
                     });
+            },
+            getReports : function(interval,type,value){
+                return $http({
+                    method: 'GET',
+                    url: url+'report/'+interval+'/'+type+'/'+value
+                });
             }
         }
     }]);

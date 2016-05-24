@@ -4,15 +4,16 @@
 
 angular.module('ReportModule',[])
 
-    .controller('ReportController',['$scope','myService',function($scope, myService){
+    .controller('ReportController',['$scope','$stateParams','myService',function($scope,$stateParams, myService){
 
         $scope.elements = [];
 
         $scope.primary = ['heading','material','destination','loader','truck'];
         $scope.secondary = [];
 
+        var interval = $stateParams.interval || 'daily';
+
         $scope.onPrimaryChange = function() {
-            console.log("Selected option",$scope.selectedPrimary);
             myService.getAllData($scope.selectedPrimary).then(function successCallback(response) {
                 var values = [];
                 for(var i=0; i<response.data.length; i++){
@@ -25,13 +26,11 @@ angular.module('ReportModule',[])
         };
 
         $scope.onSecondaryChange = function() {
-            console.log("Selected secondary option",$scope.selectedSecondary,$scope.selectedPrimary);
-            /*myService.getReports($scope.selectedPrimary,$scope.selectedSecondary).then(function successCallback(response) {
+            myService.getReports(interval,$scope.selectedPrimary,$scope.selectedSecondary).then(function successCallback(response) {
                 $scope.elements = response.data;
-
             }, function errorCallback(response) {
                 console.log("error",response);
-            });*/
+            });
         };
 
     }])
