@@ -407,3 +407,13 @@ a:hover, a:focus, .focus-class {
     outline: none!important;
     list-style: none;
 }
+
+.width400 {
+    width: 448px;
+    padding: 6px 16px;
+    margin-top: 12px;
+    margin-left: 0px;
+    color: #fff;
+    border: 0;
+    background: #242421;
+}

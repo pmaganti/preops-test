@@ -53,7 +53,7 @@ angular.module('barrick')
                         $scope.myelement = {};
 
                         $scope.metaData = metaData;
-
+                        $scope.myelement.editactive = ['Mining','Backfilling'];
                         //======= index = -1 indicates add, otherwise edit =======
                         if(index !== -1){
                             $scope.myelement = {
@@ -62,7 +62,13 @@ angular.module('barrick')
                             };
                             if(type == "heading"){
                                 $scope.myelement.edittitle = elements[index].docs.title;
-                                $scope.myelement.editactive = elements[index].docs.active;
+                                if(elements[index].docs.active.toLowerCase() == "mining"){
+                                    $scope.myelement.editactive = ['Mining','Backfilling'];
+                                }else{
+                                    $scope.myelement.editactive = ['Backfilling'];
+                                }
+                                $scope.myelement.state = elements[index].docs.active;
+
                             }else if(type == "user"){
                                     $scope.myelement.editemployeeid = elements[index].docs.employeeID;
                                     $scope.myelement.editfirstname = elements[index].docs.firstname;
@@ -83,7 +89,7 @@ angular.module('barrick')
                                 if(type == "heading"){
                                     data = {
                                         "title" : $scope.myelement.edittitle,
-                                        "active" : $scope.myelement.editactive || false,
+                                        "active" : $scope.myelement.state,
                                         "type" : type
                                     };
                                 }else if(type == "user"){
@@ -136,7 +142,7 @@ angular.module('barrick')
                                 if(type == "heading"){
                                     data = {
                                         "title" : $scope.myelement.edittitle,
-                                        "active" : $scope.myelement.editactive || false,
+                                        "active" : $scope.myelement.state,
                                         "type" : type
                                     };
                                 }else if(type == "user"){
