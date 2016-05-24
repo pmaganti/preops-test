@@ -11,14 +11,16 @@ angular.module('barrick',['ui.router',
                           'TruckModule',
                           'HeadingModule',
                           'ReportModule'])
+    .run(function($rootScope) {
+        $rootScope.tab;
+    })
 
-    .controller('PanelController', function (){
-        this.tab = 1;
-        this.setTab = function(tabValue){
-            this.tab = tabValue;
-        };
+    .controller('PanelController',function ($rootScope){
+        /*this.setTab = function(tabValue){
+            $rootScope.tab = tabValue;
+        };*/
         this.isTabSelected = function(checkTab){
-            return this.tab === checkTab;
+            return $rootScope.tab === checkTab;
         }
     });
 

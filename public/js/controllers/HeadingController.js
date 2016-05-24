@@ -7,6 +7,7 @@ angular.module('HeadingModule',[])
     .controller('HeadingController',['$scope','myService',function($scope, myService){
 
         $scope.elements = [];
+        myService.setTab(2);
 
         myService.getAllData('heading').then(function successCallback(response) {
             $scope.elements = response.data;

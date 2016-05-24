@@ -3,10 +3,13 @@
  */
 
 angular.module('barrick')
-    .factory('myService',['$http','$uibModal',function($http,$uibModal){
+    .factory('myService',['$http','$rootScope','$uibModal',function($http,$rootScope,$uibModal){
         //var url = 'http://192.168.3.153:3000/api/';
         var url = 'http://'+location.host+'/api/';
         return {
+            setTab : function(tabNo){
+                $rootScope.tab = tabNo;
+            },
             getAllData : function(type){
                 return $http({
                     method: 'GET',

@@ -8,6 +8,7 @@ angular.module('DestinationModule',[])
     .controller('DestinationController',['$scope','myService',function($scope, myService){
 
         $scope.elements = [];
+        myService.setTab(4);
 
         myService.getAllData('destination').then(function successCallback(response) {
             $scope.elements = response.data;

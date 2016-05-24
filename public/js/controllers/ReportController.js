@@ -7,6 +7,7 @@ angular.module('ReportModule',[])
     .controller('ReportController',['$scope','$stateParams','myService',function($scope,$stateParams, myService){
 
         $scope.elements = [];
+        myService.setTab(8);
 
         $scope.primary = ['heading','material','destination','loader','truck'];
         $scope.secondary = [];

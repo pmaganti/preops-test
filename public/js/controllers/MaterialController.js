@@ -8,6 +8,7 @@ angular.module('MaterialModule',[])
     .controller('MaterialController',['$scope','myService',function($scope, myService){
 
         $scope.elements = [];
+        myService.setTab(3);
 
         myService.getAllData('material').then(function successCallback(response) {
             $scope.elements = response.data;
