@@ -143,9 +143,59 @@ var appRouter = function (app) {
         RecordModel.getAll(type,function (error, result) {
             if (error) {
                 return res.status(400).send(error);
-            }
+            }console.log(result);
             res.send(result);
         });
+    });
+
+    app.get("/api/report/:time/:type/:value", function (req, res) {
+
+        var type = req.params.type;
+        var value = req.params.value;
+        var time = req.params.time;
+        /*RecordModel.getAll(type,function (error, result) {
+            if (error) {
+                return res.status(400).send(error);
+            }
+            res.send(result);
+        });*/
+
+        var dummy_json = [ { _id: '1c7caa71e13cc42eb0b76d6c73244427',
+            docs:
+            { loader: 'loader1',
+                truck: 'Truck3',
+                header: 'GandiUUVV',
+                material: 'Gold',
+                destination: 'loc9',
+                count: '5',
+            }},
+            { _id: '1c7caa71e13cc42eb0b76d6c73244427',
+                docs:
+                { loader: 'loader2',
+                    truck: 'Truck4',
+                    header: 'GandiUUVV',
+                    material: 'Sand',
+                    destination: 'loc1',
+                    count: '3',
+                }},{ _id: '1c7caa71e13cc42eb0b76d6c73244427',
+                docs:
+                { loader: 'loader3',
+                    truck: 'Truck3',
+                    header: 'GandiUUVV',
+                    material: 'Gold',
+                    destination: 'loc4',
+                    count: '6',
+                }},
+            { _id: '1c7caa71e13cc42eb0b76d6c73244427',
+                docs:
+                { loader: 'loader4',
+                    truck: 'Truck8',
+                    header: 'GandiUUVV',
+                    material: 'Gold',
+                    destination: 'loc3',
+                    count: '1',
+                }} ];
+        res.send(dummy_json);
     });
 
 
