@@ -8,6 +8,7 @@ angular.module('LoaderModule',[])
     .controller('LoaderController',['$scope','myService',function($scope, myService){
 
         $scope.elements = [];
+        myService.setTab(6);
 
         myService.getAllData('loader').then(function successCallback(response) {
             $scope.elements = response.data;

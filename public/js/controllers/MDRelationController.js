@@ -6,6 +6,7 @@ angular.module('barrick')
 
 		$scope.mds = {};
 		$scope.elements = [];
+        myService.setTab(5);
 
 		myService.getAllData('material_destination_relation').then(function successCallback(response) {
 			//console.log(response.data);

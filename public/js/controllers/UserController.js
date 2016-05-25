@@ -7,6 +7,7 @@ angular.module('UserModule',[])
     .controller('UserController',['$scope','$http','myService',function($scope, $http, myService){
 
         $scope.elements = [];
+        myService.setTab(1);
 
         myService.getAllData('user').then(function successCallback(response) {
             $scope.elements = response.data;
