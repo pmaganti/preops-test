@@ -1,4 +1,6 @@
-<div class="container-fluid barrick-login-bg">
+<div id="login-wrapper">
+
+    <div class="container-fluid barrick-login-bg">
     <div class="barrick-logo">
         <img class="center" src="images/logo.png">
     </div>
@@ -7,20 +9,20 @@
         <div class="container ">
             <div class="barrick-login">
                 <!-- form start -->
-                <form>
+                <form ng-submit="login()">
 
                     <div class="group">
-                        <input type="email" placeholder="Username" class="focus-class barrick-userform" required></i>
+                        <input type="text" ng-model="loginUsername" placeholder="Username" class="focus-class barrick-userform" required></i>
                     </div>
 
 
                     <div class="group">
-                        <input type="password" placeholder="Password" class="focus-class barrick-pswd" required></i>
+                        <input type="password" ng-model="loginPassword" placeholder="Password" class="focus-class barrick-pswd" required></i>
                     </div>
                     <div class="group">
-
                         <div class="text-center">
-                            <button type="button" href ui-sref="login" class="barrick-button-gradient button_styled btn">Login</button>
+                            <button type="submit" class="barrick-button-gradient button_styled btn">Login</button>
+
                         </div>
                     </div>
                 </form>
@@ -29,3 +31,4 @@
     </div>
 
 </div>
+    </div>

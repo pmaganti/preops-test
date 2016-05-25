@@ -4,7 +4,7 @@
 
 angular.module('barrick')
     .config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise("users");
+//        $urlRouterProvider.otherwise("users");
         $stateProvider
             .state("users", {
                 "url": "/users",
@@ -47,9 +47,19 @@ angular.module('barrick')
                 controller: 'ReportController',
                 "cache": false
             })
-    }]);
-
-
-
-
-
+            .state("login", {
+                "url": "/login",
+                templateUrl: 'templates/login.html',
+                controller: 'LoginController',
+                "cache": false
+            })
+    }])
+     .run(['$rootScope','$location', 'Auth', function($rootScope, $location, Auth) {
+    $rootScope.$on('$routeChangeStart', function(event, toRoute, fromRoute) {
+        if(toRoute.public === undefined) {
+            if(!Auth.isAuthenticated()) {
+                $location.path('/login');
+            }
+        }
+    });
+}]);

@@ -10,7 +10,7 @@ angular.module('barrick',['ui.router',
                           'DestinationModule',
                           'TruckModule',
                           'HeadingModule',
-                          'ReportModule'])
+                          'ReportModule','LoginModule'])
     .run(function($rootScope) {
         $rootScope.tab;
     })

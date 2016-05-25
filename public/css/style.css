@@ -50,13 +50,13 @@
     unicode-range: U+0020-2666;
 }
 
-.ng-invalid.ng-dirty {
-    border-bottom : #FA787E;
-}
+/*.ng-invalid.ng-dirty {*/
+    /*border-bottom : #FA787E;*/
+/*}*/
 
-.ng-valid.ng-dirty {
-    border-bottom : #78FA89;
-}
+/*.ng-valid.ng-dirty {*/
+    /*border-bottom : #78FA89;*/
+/*}*/
 
 /*.ng-pristine.ng-invalid {
     border-color : #FA787E;
@@ -94,7 +94,7 @@ body {  background-color: #000!important;  font-family:'ProximaNova-Regular';  }
 
 table { border-collapse: collapse; padding-bottom: 150px!important; }
 
-tr:first-child { border:none; color:#c1c1c1; color:#c1c1c1; }
+tr:first-child { border:none; color:#E9C96A; }
 
 tr { border-bottom: 1px solid #404040; color:#fff; }
 
@@ -159,6 +159,11 @@ a, .btn { transition: color 300ms ease 0s, background-color 300ms ease 0s; }
 .navbar-brand { padding:0; }
 
 .navbar-brand > img, .logo img { width: auto; padding-left: 30px; }
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    /*color: #000!important;*/
+    /*background-color: #E9C96A!important;*/ text-decoration: none; }
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus { color: #000; background-color: #E9C96A; }
 
 .page-head { margin: 22px 0 5px 20px; }
 
@@ -303,7 +308,7 @@ input:checked + .slider:before {
 
 .width200 {    width: 200px; padding: 10px 15px; margin-top: -20px; margin-left: 25px; background: #242421; border: 0; color: #fff; }
 
-
+.bg-white {    background-color: #fff;}
 .gbl-login-bg{ background:#000; overflow: hidden; background-size: cover; height:100%; }
 .gbl-logo { text-align: center; padding: 80px 0 40px 0; }
 
@@ -403,7 +408,7 @@ button, input, select, textarea {
 }
 
 a:hover, a:focus, .focus-class {
-    text-decoration: none!important;
+    /*text-decoration: none!important;*/
     outline: none!important;
     list-style: none;
 }
@@ -416,4 +421,8 @@ a:hover, a:focus, .focus-class {
     color: #fff;
     border: 0;
     background: #242421;
+}
+
+.table-padd1 tr td, .table-padd1 tr th {
+    padding:12px 62px
 }
