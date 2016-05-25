@@ -86,6 +86,7 @@ angular.module('barrick')
                         $scope.ok = function () {
                             var data;
                             if(index == -1) {
+                                //====== insert ======
                                 if(type == "heading"){
                                     data = {
                                         "title" : $scope.myelement.edittitle,
@@ -126,11 +127,16 @@ angular.module('barrick')
                                     },
                                     data: data
                                 }).then(function successCallback(response) {
-                                    elements.push({
-                                        _id : response.data.id,
-                                        rev : response.data.rev,
-                                        docs : data
-                                    });
+                                    if(response.status == 200 && 'data' in response && 'id' in response.data){
+                                        elements.push({
+                                            _id : response.data.id,
+                                            rev : response.data.rev,
+                                            docs : data
+                                        });
+                                    }else{
+                                        console.log("error",response);
+                                    }
+
                                 }, function errorCallback(response) {
                                     console.log("error",response);
                                     // called asynchronously if an error occurs
@@ -170,10 +176,12 @@ angular.module('barrick')
                                     },
                                     data: data
                                 }).then(function successCallback(response) {
-                                    //==== TODO : Handle the error if obtained like following
-                                    // {error: "conflict", reason: "Document revision conflict"}
-                                    elements[index].rev = response.data.rev;
-                                    elements[index].docs = data;
+                                    if(response.status == 200 && 'data' in response && 'id' in response.data) {
+                                        elements[index].rev = response.data.rev;
+                                        elements[index].docs = data;
+                                    }else{
+                                        console.log("error",response);
+                                    }
                                 }, function errorCallback(response) {
                                     console.log("error",response);
                                     // called asynchronously if an error occurs

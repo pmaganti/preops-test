@@ -16,9 +16,9 @@ angular.module('barrick',['ui.router',
     })
 
     .controller('PanelController',function ($rootScope){
-        /*this.setTab = function(tabValue){
+        this.setTab = function(tabValue){
             $rootScope.tab = tabValue;
-        };*/
+        };
         this.isTabSelected = function(checkTab){
             return $rootScope.tab === checkTab;
         }
