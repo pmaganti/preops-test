@@ -88,7 +88,7 @@ RecordModel.getByQuery = function(queryData,callback) {
     var statement = "";
     if(query.length>0)
         statement = "SELECT docs, meta(docs).id AS _id FROM `" + config.couchbase.bucket + "` AS docs "+
-        "WHERE "+query;
+        "WHERE "+query+" and meta(docs).id NOT LIKE '_sync:rev%'";
     else
         return callback(null, []);
 
