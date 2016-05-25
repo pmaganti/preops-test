@@ -1,3 +1,7 @@
+/**
+ * Created by priyanka on 25/5/16.
+ */
+
 angular.module('LoginModule',[])
     .controller('LoginController', ['$scope', '$location', 'Auth', function ($scope, $location, Auth) {
         if($location.$$path === '/logout') {

@@ -9,54 +9,46 @@ angular.module('barrick')
             .state("users", {
                 "url": "/users",
                 templateUrl: 'templates/users.html',
-                controller: 'UserController',
-                "cache": false
+                controller: 'UserController'
             }).state("headings", {
                 "url": "/headings",
                 templateUrl: 'templates/headings.html',
-                controller: 'HeadingController',
-                "cache": false
+                controller: 'HeadingController'
             }).state("materials", {
                 "url": "/materials",
                 templateUrl: 'templates/materials.html',
-                controller: 'MaterialController',
-                "cache": false
+                controller: 'MaterialController'
             }).state("destinations", {
                 "url": "/destinations",
                 templateUrl: 'templates/destinations.html',
-                controller: 'DestinationController',
-                "cache": false
+                controller: 'DestinationController'
             }).state("mdRelation", {
                 "url": "/mdRelation",
                 templateUrl: 'templates/mat-dest.html',
-                controller: 'MDRelationController',
-                "cache": false
+                controller: 'MDRelationController'
             }).state("loaders", {
                 "url": "/loaders",
                 templateUrl: 'templates/loaders.html',
-                controller: 'LoaderController',
-                "cache": false
+                controller: 'LoaderController'
             }).state("trucks", {
                 "url": "/trucks",
                 templateUrl: 'templates/trucks.html',
-                controller: 'TruckController',
-                "cache": false
+                controller: 'TruckController'
             }).state("reports", {
                 "url": "/reports/:interval",
                 templateUrl: 'templates/reports.html',
-                controller: 'ReportController',
-                "cache": false
+                controller: 'ReportController'
             })
             .state("login", {
                 "url": "/login",
                 templateUrl: 'templates/login.html',
                 controller: 'LoginController',
-                "cache": false
+                Public:true
             })
     }])
      .run(['$rootScope','$location', 'Auth', function($rootScope, $location, Auth) {
-    $rootScope.$on('$routeChangeStart', function(event, toRoute, fromRoute) {
-        if(toRoute.public === undefined) {
+    $rootScope.$on('$locationChangeStart', function(event, toRoute, fromRoute) {
+        if(!toRoute.public) {
             if(!Auth.isAuthenticated()) {
                 $location.path('/login');
             }

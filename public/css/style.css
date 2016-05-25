@@ -308,7 +308,7 @@ input:checked + .slider:before {
 
 .width200 {    width: 200px; padding: 10px 15px; margin-top: -20px; margin-left: 25px; background: #242421; border: 0; color: #fff; }
 
-.bg-white {    background-color: #fff;}
+.bg-white {    background-color: #fff; color: #000 !important;}
 .gbl-login-bg{ background:#000; overflow: hidden; background-size: cover; height:100%; }
 .gbl-logo { text-align: center; padding: 80px 0 40px 0; }
 
@@ -418,11 +418,31 @@ a:hover, a:focus, .focus-class {
     padding: 6px 16px;
     margin-top: 12px;
     margin-left: 0px;
-    color: #fff;
+    /*color: #fff;*/ color:#000;
     border: 0;
-    background: #242421;
+    /*background: #242421;*/ background-color: #fff;
 }
 
 .table-padd1 tr td, .table-padd1 tr th {
-    padding:12px 62px
-}
+    padding:12px 62px }
+
+.table-padd2 tr td, .table-padd2 tr th { padding:12px 40px 12px 35px; }
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus { color: #000; background-color: #E9C96A; }
+
+/*.drop-subnav ul li{*/
+/*display: block;*/
+/*}*/
+/*.drop-subnav ul li {*/
+/*visibility: visible}*/
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-<my-navbar></my-navbar>
+<div id="wrapper"><my-navbar></my-navbar>
 <div id="page-wrapper col-lg-12" class="dummy">
 
     <div class="container-fluid">
@@ -7,7 +7,7 @@
             <div class="tab-hd">
                 <div class="col-lg-6 pad-0">USERS</div>
                 <div class="pull-right switch">
-                    <a href="#/logout"> <img class="switch-img" src="images/switch.png"></a>
+                    <a href ui-sref="login"> <img class="switch-img" src="images/switch.png"></a>
                 </div>
             </div>
 
@@ -29,7 +29,7 @@
                 <span class="white">Entries</span>-->
             </div>
 
-            <div class="col-lg-4 pad-56 col-md-5 col-sm-1" style="margin-top: 22px;">
+            <div class="col-lg-4 pad-56 col-md-5 col-sm-5" style="margin-top: 22px;">
 
                 <label><span class="white">SEARCH <span class="rep-search-space">:</span></span>
                     <input type="search" ng-model="searchKeyword" class="border0 bg-white" style="padding: 5px 32px 5px 5px;" placeholder="" aria-controls="example"></label>
@@ -130,3 +130,8 @@
 
 </div>
 <!-- /#page-wrapper -->
+
+    </div>
+
+
+<div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message" class="ng-binding ng-scope alert alert-danger">Username or password is incorrect</div>
