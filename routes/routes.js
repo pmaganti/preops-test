@@ -61,6 +61,9 @@ var appRouter = function (app) {
             dataExistsQuery = {title:req.body.title, type : type};
         }
 
+        if(type == 'loader' || type == 'truck'){
+            req.body.status = "OPERATIONAL";
+        }
         RecordModel.getByQuery(dataExistsQuery,function(error, result){
             if (error) {
                 return res.status(400).send(error);
