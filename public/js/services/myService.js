@@ -62,7 +62,7 @@ angular.module('barrick')
                             };
                             if(type == "heading"){
                                 $scope.myelement.edittitle = elements[index].docs.title;
-                                if(elements[index].docs.active.toLowerCase() == "mining"){
+                                if(elements[index].docs.state.toLowerCase() == "mining"){
                                     $scope.myelement.editactive = ['Mining','Backfilling'];
                                 }else{
                                     $scope.myelement.editactive = ['Backfilling'];
@@ -89,7 +89,7 @@ angular.module('barrick')
                                 if(type == "heading"){
                                     data = {
                                         "title" : $scope.myelement.edittitle,
-                                        "active" : $scope.myelement.state,
+                                        "state" : $scope.myelement.state,
                                         "type" : type
                                     };
                                 }else if(type == "user"){
@@ -142,7 +142,7 @@ angular.module('barrick')
                                 if(type == "heading"){
                                     data = {
                                         "title" : $scope.myelement.edittitle,
-                                        "active" : $scope.myelement.state,
+                                        "state" : $scope.myelement.state,
                                         "type" : type
                                     };
                                 }else if(type == "user"){
