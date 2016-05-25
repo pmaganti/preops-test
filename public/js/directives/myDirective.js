@@ -13,6 +13,13 @@ angular.module('barrick')
         }
     })
 
+    .directive('myNavbar',function(){
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/shared/myNavbar.html'
+        }
+    })
+
     .directive('stringToNumber', function() {
         return {
             require: 'ngModel',

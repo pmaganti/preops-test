@@ -67,7 +67,7 @@ angular.module('barrick')
                                 }else{
                                     $scope.myelement.editactive = ['Backfilling'];
                                 }
-                                $scope.myelement.state = elements[index].docs.active;
+                                $scope.myelement.state = elements[index].docs.state;
 
                             }else if(type == "user"){
                                     $scope.myelement.editemployeeid = elements[index].docs.employeeID;
