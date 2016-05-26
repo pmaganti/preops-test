@@ -19,6 +19,9 @@ var appRouter = function (app) {
             },
             function (err, httpResponse, body) {
                 console.log("done", err, body);
+                if(err){
+                    return res.status(400).send(err);
+                }
                 return res.status(200).send(body);
             });
 
@@ -81,6 +84,9 @@ var appRouter = function (app) {
                        },
                        function (err, httpResponse, body) {
                            console.log("done", err, body);
+                           if(err){
+                               return res.status(400).send(err);
+                           }
                            return res.status(200).send(body);
                        });
                }else{
@@ -98,7 +104,7 @@ var appRouter = function (app) {
 
         var doc = req.params.doc;
         var data = querystring.stringify(req.body);
-        var url = 'http://'+url+':4984/' + config.couchbase.bucket + '/'+doc;
+        var url = 'http://'+url_sync+':4984/' + config.couchbase.bucket + '/'+doc;
         request.put({
                 url : url, body : JSON.stringify(req.body), headers : {
                     'if-Match' : req.headers['if-match']
@@ -106,6 +112,9 @@ var appRouter = function (app) {
             },
             function (err, httpResponse, body) {
                 console.log("done", err, body);
+                if(err){
+                    return res.status(400).send(err);
+                }
                 return res.status(200).send(body);
             });
     });

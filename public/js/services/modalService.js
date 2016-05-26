@@ -69,14 +69,14 @@ angular.module('barrick')
                                 var material = JSON.parse($scope.myelement.material);
                                 var destination = JSON.parse($scope.myelement.destination);
                                 var materialData = material.docs;
-                                materialData.id = material._id;
+                                materialData._id = material._id;
                                 var destinationData = destination.docs;
-                                destinationData.id = destination._id;
+                                destinationData._id = destination._id;
                                 data = {
                                     "material": materialData,
                                     "destination": destinationData,
                                     "type": type,
-                                    "m_d_relation": materialData.id + '_' + destinationData.id
+                                    "m_d_relation": materialData._id + '_' + destinationData._id
                                 };
                             }else{
                                 data = {
