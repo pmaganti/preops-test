@@ -12,39 +12,37 @@
     </div>
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div id="bx-pager" class="pad-30 collapse navbar-collapse navbar-ex1-collapse">
-        <section ng-controller="PanelController as panel">
+        <section>
             <ul class="nav navbar-nav side-nav">
-                <li ng-class="{active : panel.isTabSelected(1)}" class="gradient">
+                <li ui-sref-active="active" class="gradient">
                     <a class="pad-60" href ui-sref="users">Users</a>
                 </li>
-                <li ng-class="{active : panel.isTabSelected(2)}" class="gradient">
+                <li ui-sref-active="active" class="gradient">
                     <a class="pad-60" href ui-sref="headings">Heading</a>
                 </li>
-                <li ng-class="{active : panel.isTabSelected(3)}" class="gradient">
+                <li ui-sref-active="active" class="gradient">
                     <a class="pad-60" href ui-sref="materials">Materials</a>
                 </li>
-                <li ng-class="{active : panel.isTabSelected(4)}" class="gradient">
+                <li ui-sref-active="active" class="gradient">
                     <a class="pad-60" href ui-sref="destinations">Destinations</a>
                 </li>
-                <li ng-class="{active : panel.isTabSelected(5)}" class="gradient">
+                <li ui-sref-active="active" class="gradient">
                     <a class="pad-60" href ui-sref="mdRelation">Materials / Destinations Relations</a>
                 </li>
-                <li ng-class="{active : panel.isTabSelected(6)}" class="gradient">
+                <li ui-sref-active="active" class="gradient">
                     <a class="pad-60" href ui-sref="loaders">Loaders</a>
                 </li>
-                <li ng-class="{active : panel.isTabSelected(7)}" class="gradient">
+                <li ui-sref-active="active" class="gradient">
                     <a class="pad-60" href ui-sref="trucks">Trucks</a>
                 </li>
 
-                <li ng-class="{active : panel.isTabSelected(8)}" ng-click="panel.setTab(8)" class="gradient">
+                <li class="gradient">
                     <a class="pad-60" href id="menu1" data-toggle="dropdown">Reports <b class="caret"></b></a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-
-                        <li role="presentation"><a class="pad-60" role="menuitem" tabindex="-1" href ui-sref="reports({interval: 'daily'})">Daily</a></li>
-                        <li role="presentation"><a class="pad-60" role="menuitem" tabindex="-1" href ui-sref="reports({interval: 'weekly'})">Weekly</a></li>
-                        <li role="presentation"><a class="pad-60" role="menuitem" tabindex="-1" href ui-sref="reports({interval: 'monthly'})">Monthly</a></li>
+                        <li ui-sref-active="active" role="presentation"><a class="pad-60" role="menuitem" tabindex="-1" href ui-sref="reports({interval: 'daily'})">Daily</a></li>
+                        <li ui-sref-active="active" role="presentation"><a class="pad-60" role="menuitem" tabindex="-1" href ui-sref="reports({interval: 'weekly'})">Weekly</a></li>
+                        <li ui-sref-active="active" role="presentation"><a class="pad-60" role="menuitem" tabindex="-1" href ui-sref="reports({interval: 'monthly'})">Monthly</a></li>
                     </ul>
-
                 </li>
 
 

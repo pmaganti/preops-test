@@ -69,7 +69,7 @@
                      margin-top: 35px;">
 
                     <label class="pull-right"><span class="white">SEARCH <span class="rep-search-space">:</span></span>
-                        <input type="search" class="border0 search-btn bg-white" style="margin-right: 50px" placeholder="" aria-controls="example"></label>
+                        <input type="search" ng-model="searchKeyword" class="border0 search-btn bg-white" style="margin-right: 50px" placeholder="" aria-controls="example"></label>
 
                 </div>
 
@@ -92,7 +92,7 @@
 
                             </tr>
 
-                            <tr ng-repeat="element in elements">
+                            <tr ng-repeat="element in elements | filter : searchKeyword">
                                 <td>{{element.docs.loader}}</td>
                                 <td>{{element.docs.header}}</td>
                                 <td>{{element.docs.truck}}</td>

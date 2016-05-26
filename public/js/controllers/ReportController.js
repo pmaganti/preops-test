@@ -2,12 +2,11 @@
  * Created by jgandi on 19/5/16.
  */
 
-angular.module('ReportModule',[])
+angular.module('barrick')
 
-    .controller('ReportController',['$scope','$stateParams','myService',function($scope,$stateParams, myService){
+    .controller('ReportController',['$scope','$stateParams','httpService',function($scope, $stateParams, httpService){
 
         $scope.elements = [];
-        myService.setTab(8);
 
         $scope.primary = ['heading','material','destination','loader','truck'];
         $scope.secondary = [];
@@ -15,23 +14,25 @@ angular.module('ReportModule',[])
         var interval = $stateParams.interval || 'daily';
 
         $scope.onPrimaryChange = function() {
-            myService.getAllData($scope.selectedPrimary).then(function successCallback(response) {
-                var values = [];
-                for(var i=0; i<response.data.length; i++){
-                    values[i] = response.data[i].docs.title;
-                }
-                $scope.secondary = values;
-            }, function errorCallback(response) {
-                console.log("error",response);
-            });
+            httpService.getAllRequest($scope.selectedPrimary)
+                .then(function successCallback(response) {
+                    var values = [];
+                    for(var i=0; i<response.data.length; i++){
+                        values[i] = response.data[i].docs.title;
+                    }
+                    $scope.secondary = values;
+                }, function errorCallback(response) {
+                    console.log("error",response);
+                });
         };
 
         $scope.onSecondaryChange = function() {
-            myService.getReports(interval,$scope.selectedPrimary,$scope.selectedSecondary).then(function successCallback(response) {
-                $scope.elements = response.data;
-            }, function errorCallback(response) {
-                console.log("error",response);
-            });
+            httpService.getAllReports(interval,$scope.selectedPrimary,$scope.selectedSecondary)
+                .then(function successCallback(response) {
+                    $scope.elements = response.data;
+                }, function errorCallback(response) {
+                    console.log("error",response);
+                });
         };
 
     }])

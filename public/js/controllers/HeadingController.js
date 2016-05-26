@@ -2,26 +2,44 @@
  * Created by jgandi on 19/5/16.
  */
 
-angular.module('HeadingModule',[])
+angular.module('barrick')
 
-    .controller('HeadingController',['$scope','myService',function($scope, myService){
+    .controller('HeadingController',['$scope','modalService','httpService',function($scope, modalService, httpService){
 
         $scope.elements = [];
-        myService.setTab(2);
 
-        myService.getAllData('heading').then(function successCallback(response) {
-            $scope.elements = response.data;
+        var type = 'heading';
 
-        }, function errorCallback(response) {
-            console.log("error",response);
-        });
+        httpService.getAllRequest(type)
+            .then(function successCallback(response) {
+                $scope.elements = response.data;
+            }, function errorCallback(response) {
+                console.log("error",response);
+            });
 
-        $scope.delete = function(elements,index){
-            myService.deleteFunction(elements,index,'heading');
+        $scope.deleteElement = function(index){
+            modalService.deleteModal($scope,type,index,function(success){
+                if(success){
+                    $scope.elements.splice(index,1);
+                }
+            });
         };
 
-        $scope.addOrEdit = function(elements,index){
-            myService.addFunction(elements,index,'heading');
+        $scope.editElement = function(index){
+            modalService.editModal($scope,type,index,function(success,response){
+                if(success) {
+                    $scope.elements[index].rev = response.rev;
+                    $scope.elements[index].docs = response.docs;
+                }
+            });
         };
 
-    }])
+        $scope.addElement = function(){
+            modalService.addModal($scope,type,function(success,response){
+                if(success){
+                    $scope.elements.push(response);
+                }
+            });
+        };
+
+    }]);

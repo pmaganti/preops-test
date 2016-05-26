@@ -40,7 +40,7 @@
 
             <div class="col-lg-2 col-md-4 col-sm-12 pull-right pad-56" style="
                      margin-top: 22px;">
-                <button class="add-btn black" ng-click="addOrEdit(elements,-1)">ADD NEW</button>
+                <button class="add-btn black" ng-click="addElement()">ADD NEW</button>
             </div>
             <!--table starts-->
             <div class="table-div">
@@ -66,8 +66,8 @@
                             <td>{{element.docs.title}}</td>
                             <td>{{element.docs.state || '-'}}</td>
                             <td class="flex1">
-                                <button class="edit-btn" ng-click="addOrEdit(elements,elements.indexOf(element))">Edit</button>
-                                <button class="edit-btn" ng-click="delete(elements,elements.indexOf(element))">Delete</button>
+                                <button class="edit-btn" ng-click="editElement($index)">Edit</button>
+                                <button class="edit-btn" ng-click="deleteElement($index)">Delete</button>
                             </td>
                         </tr>
 
