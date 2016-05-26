@@ -436,7 +436,16 @@ a:hover, a:focus, .focus-class {
 /*.drop-subnav ul li {*/
 /*visibility: visible}*/
 
+.border-select {
+    background-color: #707066!important;
+    border:none;border-radius:3px;color:#000;
+}
+.dropdown-menu > .active1 > a, .dropdown-menu > .active1 > a:hover, .dropdown-menu > .active1 > a:focus
+{
+    background-color: inherit!important;
+    color:#E9C96A!important;
 
+}
 
 
 
