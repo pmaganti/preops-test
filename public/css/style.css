@@ -446,6 +446,7 @@ a:hover, a:focus, .focus-class {
     color:#E9C96A!important;
 
 }
+.table-reports { overflow-x: scroll;  }
 
 
 
