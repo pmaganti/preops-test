@@ -5,16 +5,17 @@
 var app = angular.module('LoginModule');
 app.service('Auth', ['$location',function($location){
     var service = this;
-    var _isLoggedIn = false;
+    //var _isLoggedIn = false;
 
     service.isAuthenticated = function(){
-        return _isLoggedIn;
+        //return _isLoggedIn;
+        return (localStorage.getItem('isLoggedIn')=='true') && (localStorage.getItem('username'));
     };
 
     service.logout = function(){
-        _isLoggedIn = false;
-        localStorage.removeItem('username', username);
-        localStorage.removeItem('isLoggedIn', false);
+        //_isLoggedIn = false;
+        localStorage.removeItem('username');
+        localStorage.removeItem('isLoggedIn');
 
     };
 
@@ -23,19 +24,13 @@ app.service('Auth', ['$location',function($location){
         // currently letting the user login
         if(username === '123' && password === '123')
         {
-            _isLoggedIn = true;
+            //_isLoggedIn = true;
             localStorage.setItem('username', username);
             localStorage.setItem('isLoggedIn', true);
             $location.path('/');
         }
 
     };
-
-
-
-    isAuthenticated = function() {
-        return (localStorage.getItem('isLoggedIn')=='true') && (localStorage.getItem('username'));
-    }
 }]);
 
 

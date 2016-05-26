@@ -4,13 +4,6 @@
 
 angular.module('LoginModule',[])
     .controller('LoginController', ['$scope', '$location', 'Auth', function ($scope, $location, Auth) {
-        if($location.$$path === '/logout') {
-            Auth.logout();
-        }
-
-        if($location.$$path === '/login' || $location.$$path === '/users') {
-            if(Auth.isAuthenticated()) $location.path('/');
-        }
 
         $scope.login = function() {
             Auth.login( $scope.loginUsername, $scope.loginPassword);
@@ -21,6 +14,7 @@ angular.module('LoginModule',[])
 
         $scope.logout = function () {
             Auth.logout();
+            $location.path('/login')
         };
 
     }]);

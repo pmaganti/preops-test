@@ -20,6 +20,16 @@ angular.module('barrick')
         }
     })
 
+    .directive('myHeader',function(){
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/shared/myHeader.html',
+            link: function (scope, element, attrs) {
+                scope.info = attrs.info;
+            }
+        }
+    })
+
     .directive('stringToNumber', function() {
         return {
             require: 'ngModel',
