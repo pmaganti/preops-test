@@ -13,26 +13,11 @@ angular.module('barrick')
 
         var interval = $stateParams.interval || 'daily';
 
-        $scope.onPrimaryChange = function() {
-            httpService.getAllRequest($scope.selectedPrimary)
-                .then(function successCallback(response) {
-                    var values = [];
-                    for(var i=0; i<response.data.length; i++){
-                        values[i] = response.data[i].docs.title;
-                    }
-                    $scope.secondary = values;
-                }, function errorCallback(response) {
-                    console.log("error",response);
-                });
-        };
+        httpService.getAllReports(interval)
+            .then(function successCallback(response) {
+                $scope.elements = response.data;
+            }, function errorCallback(response) {
+                console.log("error",response);
+            });
 
-        $scope.onSecondaryChange = function() {
-            httpService.getAllReports(interval,$scope.selectedPrimary,$scope.selectedSecondary)
-                .then(function successCallback(response) {
-                    $scope.elements = response.data;
-                }, function errorCallback(response) {
-                    console.log("error",response);
-                });
-        };
-
-    }])
+    }]);

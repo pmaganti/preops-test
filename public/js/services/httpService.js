@@ -51,10 +51,10 @@ angular.module('barrick')
                         console.log(err);
                     });
             },
-            getAllReports : function(interval,type,value){
+            getAllReports : function(interval){
                 return $http({
                     method: 'GET',
-                    url: url+'report/'+interval+'/'+type+'/'+value
+                    url: url+'report/'+interval
                 });
             }
         }

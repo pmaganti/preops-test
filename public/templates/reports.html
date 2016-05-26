@@ -6,77 +6,6 @@
         <div class="container-fluid">
             <div class="row">
             <my-header info="Reports"></my-header>
-            <!-- Page Heading -->
-            <!--<div class="row">-->
-                <!--<div class="tab-hd">-->
-                    <!--<div class="col-lg-6 col-md-4 pad-0">REPORTS </div>-->
-                    <!--<div class="pull-right switch">-->
-                        <!--<a href ui-sref="login"> <img class="switch-img" src="images/switch.png"></a>                    </div>-->
-                <!--</div>-->
-<!--search and clear-->
-                <!--<div class="report-page">-->
-                <!--&lt;!&ndash;<div class="reports-tp-pad">&ndash;&gt;-->
-                    <!--<div class="col-lg-4 col-md-4 col-sm-4" >-->
-                        <!--<div id="type" class="dropdown right">-->
-                            <!--<select class="width200" title="Type" ng-model="selectedPrimary" ng-options="item for item in primary" ng-change="onPrimaryChange()">-->
-                                <!--<option value="">Type</option>-->
-                            <!--</select>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <!--<div class="col-lg-4 col-md-4 col-sm-4">-->
-                        <!--<div id="value" class="dropdown">-->
-                                <!--<select class="width200" title="Value" ng-model="selectedSecondary" ng-options="item1 for item1 in secondary" ng-change="onSecondaryChange()">-->
-                                    <!--<option value="">Value</option>-->
-                                <!--</select>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <!--<div class="col-lg-2 col-md-2 col-sm-2">-->
-                     <!--<button class="sea-clear black report-mrgtp5">SEARCH</button>-->
-                        <!--</div>-->
-
-                    <!--<div class="col-lg-2 col-md-2 col-sm-2">-->
-                        <!--<button class="sea-clear black report-mrgtp5">CLEAR</button>-->
-                    <!--</div>-->
-
-                <!--</div>-->
-
-
-                    <!--</div>-->
-                <!--</div>-->
-
-
-            <!--search and clear-->
-
-                <!--<div class="col-lg-6 col-md-4 col-sm-4 reports-tp-pad1">-->
-
-                    <!--<span class="white">Show</span>-->
-                    <!--<select class="border-select">-->
-                        <!--<option value="1">1</option>-->
-                        <!--<option value="2">2</option>-->
-                        <!--<option value="3">3</option>-->
-                        <!--<option value="4">4</option>-->
-                        <!--<option value="5">5</option>-->
-                        <!--<option value="6">6</option>-->
-                        <!--<option value="7">7</option>-->
-                        <!--<option value="8">8</option>-->
-                        <!--<option value="9">9</option>-->
-                        <!--<option value="10">10</option>-->
-                    <!--</select>-->
-                    <!--<span class="white">Entries</span>-->
-                <!--</div>-->
-
-                <!--<div class="col-lg-6 col-md-8 col-sm-8" style="-->
-                     <!--margin-top: 35px;">-->
-
-                    <!--<label class="pull-right"><span class="white">SEARCH <span class="rep-search-space">:</span></span>-->
-                        <!--<input type="search" ng-model="searchKeyword" class="border0 search-btn bg-white" style="margin-right: 50px" placeholder="" aria-controls="example"></label>-->
-
-                <!--</div>-->
-
-
-
                 <!--table starts-->
                 <div class="table-div table-mar" id="reports">
                     <div class="col-lg-12">
@@ -93,7 +22,16 @@
                                 <th width="20%">User</th>
                             </tr>
 
-                            <!--<tr ng-repeat="element in elements | filter : searchKeyword">-->
+                            <tr ng-repeat="element in elements | filter : searchKeyword">
+                                <td>{{element.docs.loader}}</td>
+                                <td>{{element.docs.header}}</td>
+                                <td>{{element.docs.truck}}</td>
+                                <td>{{element.docs.material}}</td>
+                                <td>{{element.docs.destination}}</td>
+                                <td>{{element.docs.date}}</td>
+                                <td>{{element.docs.user}}</td>
+                            </tr>
+
                             <tr>
                                 <td>TRH0002</td>
                                 <td>OXIDE</td>
@@ -103,14 +41,7 @@
                                 <td>TUE<br>02.02.2016 6:00</td>
                                 <td>THOMAS REID</td>
                             </tr>
-                            <!--<tr>
-                                <td>LOA005</td>
-                                <td>CA3905_PT_CR545</td>
-                                <td>TRH0002</td>
-                                <td>OXIDE</td>
-                                <td>SEGRATED OXIDE STOCKPILE</td>
-                                <td>3</td>
-                            </tr>-->
+
                         </table>
                     </div>
                 </div>
