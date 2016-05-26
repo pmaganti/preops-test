@@ -22,7 +22,7 @@ app.service('Auth', ['$location',function($location){
     service.login = function(username, password){
         //TODO(Priya) Will validate the credentials later from Parse
         // currently letting the user login
-        if(username === '123' && password === '123')
+        if(username === 'admin' && password === 'B@rr1ck')
         {
             //_isLoggedIn = true;
             localStorage.setItem('username', username);
