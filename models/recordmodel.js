@@ -2,6 +2,7 @@ var uuid = require("uuid");
 var db = require("../app").bucket;
 var config = require("../config");
 var N1qlQuery = require('couchbase').N1qlQuery;
+var moment = require('moment');
 
 function RecordModel() { };
 
@@ -88,7 +89,7 @@ RecordModel.getByQuery = function(queryData,callback) {
     var statement = "";
     if(query.length>0)
         statement = "SELECT docs, meta(docs).id AS _id FROM `" + config.couchbase.bucket + "` AS docs "+
-        "WHERE "+query+" and meta(docs).id NOT LIKE '_sync:rev%'";
+        "WHERE "+query;
     else
         return callback(null, []);
 
@@ -187,6 +188,75 @@ RecordModel.getAllMD = function(callback) {
         data["material"] = material;
         data["destination"] = destination;
         callback(null, !null_callback?data:[]);
+    });
+
+
+};
+
+/*
+ * Get all documents from Couchbase Server using N1QL
+ */
+RecordModel.getReports = function(dates,callback) {
+    var today,till;var date_query ="";
+    if(dates){
+        today = dates.today;
+        till = dates.till;
+        date_query = " and STR_TO_MILLIS(created) BETWEEN STR_TO_MILLIS('"+till+"') AND STR_TO_MILLIS('"+today+"')";
+    }
+
+    var statement = "SELECT docs, meta(docs).id AS _id FROM `" + config.couchbase.bucket + "` AS docs WHERE type='trucktransaction' and state='Dumping' and meta(docs).id NOT LIKE '_sync:rev%'" +
+        ""+date_query+" ORDER BY created desc";
+    var query = N1qlQuery.fromString(statement);//.consistency(N1qlQuery.Consistency.REQUEST_PLUS);
+    console.log(query)
+    db.query(query, function (error, result) {
+        if (error) {
+            console.log(error)
+            return callback(error, null);
+        }
+
+        var null_callback = false;
+        var data = result.map(function(obj){
+         if(Object.keys(obj).length){
+         //===== changed code here ====
+             var report = {};
+             report.loader = (obj.docs.loader !== undefined) ? obj.docs.loader.title : '';
+             report.truck = (obj.docs.truck !== undefined) ? obj.docs.truck.title : '';
+             report.destination = (obj.docs.destination !== undefined) ? obj.docs.destination.title : '';
+             report.material = (obj.docs.material !== undefined) ? obj.docs.material.title : '';
+             report.heading = (obj.docs.heading !== undefined) ? obj.docs.heading.title : '';
+             report.user = (obj.docs.user !== undefined) ? obj.docs.user.firstname+' '+obj.docs.user.lastname : '';
+             report.date = (obj.docs.created !== undefined) ? moment(obj.docs.created).format('dddd, MMM Do YYYY h:mm:ssa') : '';
+
+
+             return {docs:report};
+         }else{
+             return callback(null,result);
+         }
+         //return ;
+         });
+     //   var data = {};
+        var material = [];
+        var destination = [];
+
+       /* result.forEach(function (obj) {
+            if (Object.keys(obj).length) {
+                //===== changed code here ====
+                obj.rev = (obj.docs._sync !== undefined) ? obj.docs._sync.rev : '';
+                obj.time_saved = (obj.docs._sync !== undefined) ? obj.docs._sync.time_saved : '';
+
+                delete obj.docs._sync;
+                if (obj.docs.type == 'material') {
+                    material.push(obj);
+                } else if (obj.docs.type == 'destination') {
+                    destination.push(obj);
+                }
+            } else {
+                null_callback = true;
+            }
+        });
+        data["material"] = material;
+        data["destination"] = destination;*/
+        callback(null, data);
     });
 };
 

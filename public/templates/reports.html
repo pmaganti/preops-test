@@ -59,7 +59,16 @@
                                 <th>User</th>
                                 </tr>
 
-                                <tr>
+                                <tr ng-repeat="element in elements | filter : searchKeyword">
+                                <td>{{element.docs.loader}}</td>
+                                <td>{{element.docs.heading}}</td>
+                                <td>{{element.docs.truck}}</td>
+                                <td>{{element.docs.material}}</td>
+                                <td>{{element.docs.destination}}</td>
+                                <td>{{element.docs.date}}</td>
+                                <td>{{element.docs.user}}</td>
+                                </tr>
+                               <!-- <tr>
                                 <td>LOAD002</td>
                                     <td>DESTINATIfgnmcbgjkcvnh ggm,klty bmON</td>
                                     <td>TRH000gh mikui8lyk vm2</td>
@@ -97,7 +106,7 @@
                                 <td>SEGRATED OXIDE STOCKPILE</td>
                                 <td>TUE<br>02.02.2016 6:00</td>
                                 <td>Barrick User</td>
-                                </tr>
+                                </tr>-->
                             </table>
                         </div>
 

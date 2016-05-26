@@ -1,6 +1,8 @@
 {
     "couchbase": {
         "server": "127.0.0.1:8091",
-        "bucket": "dandeli"
+        "bucket": "dandeli",
+        "url" : "127.0.0.1",
+        "report_time":"T07:00:00.0000000-07:00"
     }
 }

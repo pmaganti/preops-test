@@ -3,12 +3,15 @@ var RecordModel = require("../models/recordmodel"), request = require('request')
 var config = require("../config");
 var querystring = require('querystring');
 var request = require('request');
+var url_sync = config.couchbase.url;
+var moment = require('moment');
+var reports_time = config.couchbase.report_time;
 var appRouter = function (app) {
 
 
     app.delete("/api/:type/:doc", function (req, res) {
         var doc = req.params.doc;
-        var url = 'http://localhost:4984/' + config.couchbase.bucket + '/'+doc;
+        var url = 'http://'+url_sync+':4984/' + config.couchbase.bucket + '/'+doc;
         request.delete({
                 url : url, headers : {
                     'if-Match' : req.headers['if-match']
@@ -54,6 +57,8 @@ var appRouter = function (app) {
             //
         }else if(type == 'material_destination_relation'){
             dataExistsQuery = {m_d_relation : req.body.m_d_relation};
+        }else if(type == 'trucktransaction' || type == 'loadertransaction'){
+            dataExistsQuery = {};
         }else{
             if(!req.body.title) {
                 return res.status(400).send({"status": "error", "message": "Title is required"});
@@ -69,7 +74,7 @@ var appRouter = function (app) {
                 return res.status(400).send(error);
             }else{
                if(result.length == 0){
-                   var url = 'http://localhost:4984/' + config.couchbase.bucket+'/';
+                   var url = 'http://'+url_sync+':4984/' + config.couchbase.bucket+'/';
                    console.log("came here :P");
                    request.post({
                            url : url, body : JSON.stringify(req.body)
@@ -93,7 +98,7 @@ var appRouter = function (app) {
 
         var doc = req.params.doc;
         var data = querystring.stringify(req.body);
-        var url = 'http://localhost:4984/' + config.couchbase.bucket + '/'+doc;
+        var url = 'http://'+url+':4984/' + config.couchbase.bucket + '/'+doc;
         request.put({
                 url : url, body : JSON.stringify(req.body), headers : {
                     'if-Match' : req.headers['if-match']
@@ -103,6 +108,41 @@ var appRouter = function (app) {
                 console.log("done", err, body);
                 return res.status(200).send(body);
             });
+    });
+
+    app.get("/api/report/:time", function (req, res) {
+
+        //var type = req.params.type;
+      //  var value = req.params.value;
+        var time = req.params.time;
+
+        var today = moment().format('YYYY-MM-DD');
+        var till = "";
+        if(time == 'daily'){
+            till = moment().add(-1, 'days').format('YYYY-MM-DD');
+        }else if(time == 'weekly'){
+            till = moment().add(-1, 'weeks').format('YYYY-MM-DD');
+        }else if(time == 'monthly'){
+            till = moment().add(-1, 'M').format('YYYY-MM-DD');
+        }else if(time == 'all'){
+            till = "";
+        }
+
+        var dates = {};
+        if(till != ""){
+            today += reports_time;
+            till += reports_time; //Defaulting to 7am of the day.
+            dates = {today:today,till:till}
+        }else{
+            dates = "";
+        }
+        RecordModel.getReports(dates,function (error, result) {
+            if (error) {
+                return res.status(400).send(error);
+            }
+            res.send(result);
+        });
+
     });
 
     app.get("/api/query", function (req, res) {
@@ -146,59 +186,9 @@ var appRouter = function (app) {
         RecordModel.getAll(type,function (error, result) {
             if (error) {
                 return res.status(400).send(error);
-            }console.log(result);
+            }//console.log(result);
             res.send(result);
         });
-    });
-
-    app.get("/api/report/:time/:type/:value", function (req, res) {
-
-        var type = req.params.type;
-        var value = req.params.value;
-        var time = req.params.time;
-        /*RecordModel.getAll(type,function (error, result) {
-            if (error) {
-                return res.status(400).send(error);
-            }
-            res.send(result);
-        });*/
-
-        var dummy_json = [ { _id: '1c7caa71e13cc42eb0b76d6c73244427',
-            docs:
-            { loader: 'loader1',
-                truck: 'Truck3',
-                header: 'GandiUUVV',
-                material: 'Gold',
-                destination: 'loc9',
-                count: '5',
-            }},
-            { _id: '1c7caa71e13cc42eb0b76d6c73244427',
-                docs:
-                { loader: 'loader2',
-                    truck: 'Truck4',
-                    header: 'GandiUUVV',
-                    material: 'Sand',
-                    destination: 'loc1',
-                    count: '3',
-                }},{ _id: '1c7caa71e13cc42eb0b76d6c73244427',
-                docs:
-                { loader: 'loader3',
-                    truck: 'Truck3',
-                    header: 'GandiUUVV',
-                    material: 'Gold',
-                    destination: 'loc4',
-                    count: '6',
-                }},
-            { _id: '1c7caa71e13cc42eb0b76d6c73244427',
-                docs:
-                { loader: 'loader4',
-                    truck: 'Truck8',
-                    header: 'GandiUUVV',
-                    material: 'Gold',
-                    destination: 'loc3',
-                    count: '1',
-                }} ];
-        res.send(dummy_json);
     });
 
 
