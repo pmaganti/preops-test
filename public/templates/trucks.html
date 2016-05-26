@@ -28,7 +28,7 @@
                         </tr>-->
                         <tr ng-repeat="element in elements | filter : searchKeyword">
                             <td>{{element.docs.title}}</td>
-                            <td>{{element.docs.state || '-'}}</td>
+                            <td>{{element.docs.status || '-'}}</td>
                             <td class="flex1">
                                 <button class="edit-btn" ng-click="editElement($index)">Edit</button>
                                 <button class="edit-btn" ng-click="deleteElement($index)">Delete</button>
