@@ -305,7 +305,7 @@ input:checked + .slider:before {
 
 .rep-search-space { padding: 0 3px; }
 
-.deleteClass { padding-left: 21%; }
+.deleteClass { /*padding-left: 21%;*/ }
 
 /*.width200 {  width: 200px;  padding:5px 0;margin-top: -20px; margin-left: 25px;  }*/
 
@@ -450,6 +450,10 @@ a:hover, a:focus, .focus-class {
 .table-padd-rep tr td, .table-padd-rep tr th, .table-padd-rep tr { border:0!important; }
 
 .table-padd-rep {padding:0 20px}
+
+.error-clr { color:#ff6578; font-size: 16px;padding:0 66px; font-family:'ProximaNova-Light';}
+
+.error-clr-del { color:#ff6578; font-size: 16px;padding:0 0px; font-family:'ProximaNova-Light';}
 
 /*.table-reports { overflow-x: scroll;  }*/
 

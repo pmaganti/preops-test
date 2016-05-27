@@ -10,8 +10,10 @@ angular.module('barrick')
                 var modalInstance = $uibModal.open({
                     templateUrl: 'myModalDelete.html',
                     scope: $scope,
+                    size: 'sm',
                     controller: function (){
                         $scope.modalTitle = '';
+                        $scope.errorMsg = '';
                         $scope.ok = function () {
                             httpService.deleteRequest(type,element)
                                 .then(function successCallback(response) {
@@ -20,12 +22,14 @@ angular.module('barrick')
                                         return cb(true);
                                     }else{
                                         console.log("error",response);
-                                        modalInstance.close();
+                                        $scope.errorMsg = response.data.message || 'Something went wrong, please try again.';
+                                        //modalInstance.close();
                                         return cb(false);
                                     }
                                 }, function errorCallback(response) {
                                     console.log("error",response);
-                                    modalInstance.close();
+                                    $scope.errorMsg = response.data.message || 'Something went wrong, please try again.';
+                                    //modalInstance.close();
                                     return cb(false);
                                 });
                         };
@@ -42,6 +46,7 @@ angular.module('barrick')
                     scope: $scope,
                     controller: function () {
                         $scope.modalTitle = 'Add '+type;
+                        $scope.errorMsg = '';
                         $scope.myelement = {};
                         $scope.metaData = $scope.mds;
                         $scope.myelement.editactive = ['Mining','Backfilling'];
@@ -96,13 +101,15 @@ angular.module('barrick')
                                         return cb(true,res);
                                     }else{
                                         console.log("error",response);
-                                        modalInstance.close();
+                                        $scope.errorMsg = response.data.message || 'Something went wrong, please try again.';
+                                        //modalInstance.close();
                                         return cb(false,{});
                                     }
 
                                 }, function errorCallback(response) {
                                     console.log("error",response);
-                                    modalInstance.close();
+                                    $scope.errorMsg = response.data.message || 'Something went wrong, please try again.';
+                                    //modalInstance.close();
                                     return cb(false,{});
                                 });
                         };
@@ -116,6 +123,7 @@ angular.module('barrick')
                     scope: $scope,
                     controller: function () {
                         $scope.modalTitle = 'Edit '+type;
+                        $scope.errorMsg = '';
                         $scope.metaData = $scope.mds;
 
                         $scope.myelement = {
@@ -188,12 +196,14 @@ angular.module('barrick')
                                         return cb(true,res);
                                     }else{
                                         console.log("error",response);
-                                        modalInstance.close();
+                                        $scope.errorMsg = response.data.message || 'Something went wrong, please try again.';
+                                        //modalInstance.close();
                                         return cb(false,{});
                                     }
                                 }, function errorCallback(response) {
                                     console.log("error",response);
-                                    modalInstance.close();
+                                    $scope.errorMsg = response.data.message || 'Something went wrong, please try again.';
+                                    //modalInstance.close();
                                     return cb(false,{});
                                 });
 
