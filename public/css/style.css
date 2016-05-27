@@ -457,6 +457,8 @@ a:hover, a:focus, .focus-class {
 
 /*.table-reports { overflow-x: scroll;  }*/
 
+.capitalize {  text-transform: capitalize; }
+
 
 
 

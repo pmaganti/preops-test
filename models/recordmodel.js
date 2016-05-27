@@ -152,19 +152,6 @@ RecordModel.getAllMD = function(callback) {
         }
 
         var null_callback = false;
-        /*var data = result.map(function(obj){
-            if(Object.keys(obj).length){
-                //===== changed code here ====
-                obj.rev = (obj.docs._sync !== undefined) ? obj.docs._sync.rev : '';
-                obj.time_saved = (obj.docs._sync !== undefined) ? obj.docs._sync.time_saved : '';
-
-                delete obj.docs._sync;
-                return obj;
-            }else{
-                null_callback = true;
-            }
-            //return ;
-        });*/
         var data = {};
         var material = [];
         var destination = [];
@@ -234,29 +221,35 @@ RecordModel.getReports = function(dates,callback) {
          }
          //return ;
          });
-     //   var data = {};
-        var material = [];
-        var destination = [];
+        callback(null, data);
+    });
+};
 
-       /* result.forEach(function (obj) {
-            if (Object.keys(obj).length) {
+RecordModel.getMachineParking = function(callback) {
+    var statement = "SELECT docs, meta(docs).id AS _id FROM `" + config.couchbase.bucket + "` AS docs WHERE type ='machine_parking' and meta(docs).id NOT LIKE '_sync:rev%'" +
+        "GROUP BY machine._id ORDER BY created desc";
+    var query = N1qlQuery.fromString(statement);//.consistency(N1qlQuery.Consistency.REQUEST_PLUS);
+    console.log(query)
+    db.query(query, function(error, result) {
+        if(error) {console.log(error)
+            return callback(error, null);
+        }
+
+        var null_callback = false;
+        var data = result.map(function(obj){
+            if(Object.keys(obj).length){
                 //===== changed code here ====
                 obj.rev = (obj.docs._sync !== undefined) ? obj.docs._sync.rev : '';
                 obj.time_saved = (obj.docs._sync !== undefined) ? obj.docs._sync.time_saved : '';
-
+                obj.docs.date = (obj.docs.created !== undefined) ? moment(obj.docs.created).format('dddd, MMM Do YYYY h:mm:ssa') : '';
                 delete obj.docs._sync;
-                if (obj.docs.type == 'material') {
-                    material.push(obj);
-                } else if (obj.docs.type == 'destination') {
-                    destination.push(obj);
-                }
-            } else {
+                return obj;
+            }else{
                 null_callback = true;
             }
+            //return ;
         });
-        data["material"] = material;
-        data["destination"] = destination;*/
-        callback(null, data);
+        callback(null, !null_callback?data:[]);
     });
 };
 

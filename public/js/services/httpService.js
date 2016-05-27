@@ -56,6 +56,12 @@ angular.module('barrick')
                     method: 'GET',
                     url: url+'report/'+interval
                 });
+            },
+            getMachineParking : function(){
+                return $http({
+                    method: 'GET',
+                    url: url+'getMachineParking'
+                });
             }
         }
     }]);

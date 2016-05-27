@@ -188,7 +188,15 @@ var appRouter = function (app) {
         });
     });
 
+    app.get("/api/getMachineParking", function (req, res) {
 
+        RecordModel.getMachineParking(function (error, result) {
+            if (error) {
+                return res.status(400).send(error);
+            }
+            res.send(result);
+        });
+    });
     app.get("/api/:type", function (req, res) {
 
         var type = req.params.type;

@@ -45,6 +45,12 @@ angular.module('barrick')
                 controller: 'LoginController',
                 public:true
             })
+            .state("machineparking", {
+                "url": "/machineparking",
+                templateUrl: 'templates/machineparking.html',
+                controller: 'MachineParkingController',
+                public:true
+            })
     }])
      .run(['$rootScope','$location', 'Auth', function($rootScope, $location, Auth) {
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
