@@ -31,5 +31,5 @@
 </div>
 
 <div class="col-lg-2 col-md-4 col-sm-12 pull-right pad-56 ser-add-mrg">
-    <button class="add-btn black" ng-click="addElement()">ADD NEW</button>
+    <button ng-hide="('machineparking' | isState) || ('reports' | isState) " class="add-btn black" ng-click="addElement()">ADD NEW</button>
 </div>
