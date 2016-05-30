@@ -100,8 +100,8 @@ RecordModel.getByQuery = function(queryData,callback) {
         }
         var data = result.map(function(obj){
             //===== changed code here =====
-            obj.rev = (obj.docs._sync !== undefined) ? obj.docs._sync.rev : '';
-            obj.time_saved = (obj.docs._sync !== undefined) ? obj.docs._sync.time_saved : '';
+            obj.rev = (obj.docs._sync !== undefined && obj.docs._sync !== null) ? obj.docs._sync.rev : '';
+            obj.time_saved = (obj.docs._sync !== undefined && obj.docs._sync !== null) ? obj.docs._sync.time_saved : '';
 
             delete obj.docs._sync;
             return obj;
@@ -125,8 +125,8 @@ RecordModel.getAll = function(type,callback) {
         var data = result.map(function(obj){
             if(Object.keys(obj).length){
                 //===== changed code here ====
-                obj.rev = (obj.docs._sync !== undefined) ? obj.docs._sync.rev : '';
-                obj.time_saved = (obj.docs._sync !== undefined) ? obj.docs._sync.time_saved : '';
+                obj.rev = (obj.docs._sync !== undefined && obj.docs._sync !== null) ? obj.docs._sync.rev : '';
+                obj.time_saved = (obj.docs._sync !== undefined && obj.docs._sync !== null) ? obj.docs._sync.time_saved : '';
 
                 delete obj.docs._sync;
                 return obj;
@@ -159,8 +159,8 @@ RecordModel.getAllMD = function(callback) {
         result.forEach(function(obj){
             if(Object.keys(obj).length){
                 //===== changed code here ====
-                obj.rev = (obj.docs._sync !== undefined) ? obj.docs._sync.rev : '';
-                obj.time_saved = (obj.docs._sync !== undefined) ? obj.docs._sync.time_saved : '';
+                obj.rev = (obj.docs._sync !== undefined && obj.docs._sync !== null) ? obj.docs._sync.rev : '';
+                obj.time_saved = (obj.docs._sync !== undefined && obj.docs._sync !== null) ? obj.docs._sync.time_saved : '';
 
                 delete obj.docs._sync;
                 if(obj.docs.type == 'material'){
@@ -239,9 +239,9 @@ RecordModel.getMachineParking = function(callback) {
         var data = result.map(function(obj){
             if(Object.keys(obj).length){
                 //===== changed code here ====
-                obj.rev = (obj.docs._sync !== undefined) ? obj.docs._sync.rev : '';
-                obj.time_saved = (obj.docs._sync !== undefined) ? obj.docs._sync.time_saved : '';
-                obj.docs.date = (obj.docs.created !== undefined) ? moment(obj.docs.created).format('dddd, MMM Do YYYY h:mm:ssa') : '';
+                obj.rev = (obj.docs._sync !== undefined && obj.docs._sync !== null) ? obj.docs._sync.rev : '';
+                obj.time_saved = (obj.docs._sync !== undefined && obj.docs._sync !== null) ? obj.docs._sync.time_saved : '';
+                obj.docs.date = (obj.docs.created !== undefined && obj.docs.created !== null) ? moment(obj.docs.created).format('dddd, MMM Do YYYY h:mm:ssa') : '';
                 delete obj.docs._sync;
                 return obj;
             }else{
