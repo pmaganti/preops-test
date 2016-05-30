@@ -1,5 +1,5 @@
 <div class="tab-hd">
-    <div class="col-lg-6 pad-0">{{info}}</div>
+    <div class="col-lg-6 col-md-4 col-sm-4 pad-0">{{info}}</div>
     <div class="pull-right switch dummy" ng-controller="LoginController">
         <a href ng-click="logout()"> <img class="switch-img" src="images/switch.png"></a>
     </div>
@@ -23,14 +23,13 @@
     <!--<span class="white">Entries</span>-->
 </div>
 
-<div class="col-lg-4 pad-56 col-md-5 col-sm-5" style="margin-top: 22px;">
+<div class="col-lg-4 pad-56 col-md-5 col-sm-5 ser-add-mrg">
 
     <label><span class="white">SEARCH <span class="rep-search-space">:</span></span>
         <input type="search" ng-model="searchKeyword" class="border0 bg-white" style="padding: 5px 32px 5px 5px;" placeholder="" aria-controls="example"></label>
 
 </div>
 
-<div class="col-lg-2 col-md-4 col-sm-12 pull-right pad-56" style="
-                     margin-top: 22px;">
+<div class="col-lg-2 col-md-4 col-sm-12 pull-right pad-56 ser-add-mrg">
     <button class="add-btn black" ng-click="addElement()">ADD NEW</button>
 </div>

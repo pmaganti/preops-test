@@ -171,7 +171,9 @@ a, .btn { transition: color 300ms ease 0s, background-color 300ms ease 0s; }
 
 .navbar-inverse { background-color: none!important; }
 
-.tab-hd{ padding:18px 50px 34px 50px;color: #fff; font-size: 18px; background-color: #242421; }
+/*.tab-hd{ padding:18px 50px 34px 50px;color: #fff; font-size: 18px; background-color: #242421; }*/
+
+.tab-hd{ padding:25px 50px 46px 50px;color: #fff; font-size: 18px; background-color: #242421; }
 
 .switch { padding-right: 16px; }
 
@@ -207,7 +209,7 @@ ul.pagination li a:hover:not(.active) { background-color: #50504F; color: #FFF; 
 
 
 @media all and (min-width: 700px) and (max-width: 900px) {.table-responsive {    overflow-x: inherit;}
-    .grey { background-color: #242421; width: 100%;overflow: scroll; }
+    .grey { background-color: #242421; width: 100%;overflow: scroll}
 }
 
 @media all and (min-width: 700px) and (max-width: 1000px) {
@@ -459,10 +461,9 @@ a:hover, a:focus, .focus-class {
 
 .capitalize {  text-transform: capitalize; }
 
-
-
-
-
+.ser-add-mrg {
+    margin:35px 0 26px 0
+}
 
 
 
