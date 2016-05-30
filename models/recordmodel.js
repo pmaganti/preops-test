@@ -206,13 +206,13 @@ RecordModel.getReports = function(dates,callback) {
          if(Object.keys(obj).length){
          //===== changed code here ====
              var report = {};
-             report.loader = (obj.docs.loader !== undefined) ? obj.docs.loader.title : '';
-             report.truck = (obj.docs.truck !== undefined) ? obj.docs.truck.title : '';
-             report.destination = (obj.docs.destination !== undefined) ? obj.docs.destination.title : '';
-             report.material = (obj.docs.material !== undefined) ? obj.docs.material.title : '';
-             report.heading = (obj.docs.heading !== undefined) ? obj.docs.heading.title : '';
-             report.user = (obj.docs.user !== undefined) ? obj.docs.user.firstname+' '+obj.docs.user.lastname : '';
-             report.date = (obj.docs.created !== undefined) ? moment(obj.docs.created).format('dddd, MMM Do YYYY h:mm:ssa') : '';
+             report.loader = (obj.docs.loader !== undefined && obj.docs.loader !== null) ? obj.docs.loader.title : '';
+             report.truck = (obj.docs.truck !== undefined && obj.docs.truck !== null) ? obj.docs.truck.title : '';
+             report.destination = (obj.docs.destination !== undefined && obj.docs.destination !== null) ? obj.docs.destination.title : '';
+             report.material = (obj.docs.material !== undefined && obj.docs.material !== null) ? obj.docs.material.title : '';
+             report.heading = (obj.docs.heading !== undefined && obj.docs.heading !== null) ? obj.docs.heading.title : '';
+             report.user = (obj.docs.user !== undefined && obj.docs.user !== null) ? obj.docs.user.firstname+' '+obj.docs.user.lastname : '';
+             report.date = (obj.docs.created !== undefined && obj.docs.created !== null) ? moment(obj.docs.created).format('dddd, MMM Do YYYY h:mm:ssa') : '';
 
 
              return {docs:report};
