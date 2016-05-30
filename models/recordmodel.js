@@ -188,7 +188,7 @@ RecordModel.getReports = function(dates,callback) {
     if(dates){
         today = dates.today;
         till = dates.till;
-        date_query = " and STR_TO_MILLIS(created) BETWEEN STR_TO_MILLIS('"+till+"') AND STR_TO_MILLIS('"+today+"')";
+        date_query = " and STR_TO_UTC(created) BETWEEN STR_TO_UTC('"+till+"') AND STR_TO_UTC('"+today+"')";
     }
 
     var statement = "SELECT docs, meta(docs).id AS _id FROM `" + config.couchbase.bucket + "` AS docs WHERE type='trucktransaction' and state='Dumping' and meta(docs).id NOT LIKE '_sync:rev%'" +

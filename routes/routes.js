@@ -4,8 +4,9 @@ var config = require("../config");
 var querystring = require('querystring');
 var request = require('request');
 var url_sync = config.couchbase.url;
-var moment = require('moment');
+var moment = require('moment-timezone');
 var reports_time = config.couchbase.report_time;
+moment.tz.setDefault("America/Los_Angeles");
 var appRouter = function (app) {
 
 
@@ -125,22 +126,23 @@ var appRouter = function (app) {
       //  var value = req.params.value;
         var time = req.params.time;
 
-        var today = moment().format('YYYY-MM-DD');
+        var today = moment().hour("7").minute("00").second("0").format();console.log(today);
         var till = "";
         if(time == 'daily'){
-            till = moment().add(-1, 'days').format('YYYY-MM-DD');
+            till = moment().add(-1, 'days');
         }else if(time == 'weekly'){
-            till = moment().add(-1, 'weeks').format('YYYY-MM-DD');
+            till = moment().add(-1, 'weeks');
         }else if(time == 'monthly'){
-            till = moment().add(-1, 'M').format('YYYY-MM-DD');
+            till = moment().add(-1, 'M');
         }else if(time == 'all'){
             till = "";
         }
 
         var dates = {};
         if(till != ""){
-            today += reports_time;
-            till += reports_time; //Defaulting to 7am of the day.
+            till = till.hour("7").minute("00").second("0").format();
+           // today += reports_time;
+            //till += reports_time; //Defaulting to 7am of the day.
             dates = {today:today,till:till}
         }else{
             dates = "";
