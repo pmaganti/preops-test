@@ -464,8 +464,5 @@ a:hover, a:focus, .focus-class {
 .ser-add-mrg {
     margin:35px 0 26px 0
 }
-
-
-
-
+.scroll-table{ width: 100%; overflow-x: auto; overflow-y: visible; }
 
