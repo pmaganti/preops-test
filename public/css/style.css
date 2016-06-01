@@ -1048,3 +1048,21 @@ padding-right: 0;
     background-size: cover;
     height: 100%;
 }
+.tab-bg {
+    color:#fff;
+    border-right: 1px solid #000;
+    padding: 10px 0;
+    background-color: #333;
+    cursor: pointer;
+}
+.pad-left-0 {
+    padding-left: 0;
+}
+
+.showActive{
+    color: #000;
+    background: #E9C96A;
+    cursor: pointer;
+
+
+}

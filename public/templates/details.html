@@ -104,210 +104,202 @@
         </div>
     </div>
 </div>
-<ul class="nav nav-tabs shift-tabs">
-    <li class="active shift-per"><a data-toggle="tab" href="#start">Start Shift</a></li>
-    <li class="shift-per"><a data-toggle="tab" href="#end">End Shift</a></li>
-</ul><div class="row">
-<div class="col-md-12">
-<div class="reports">
-
-<!--<tr><td colspan="2" style="background: #3767B1;"><p class="groupName">FROM THE GROUND</p></td></tr>-->
 
 
+<div>
+    <div id="tabs">
+        <ul class="pad-left-0">
+            <li class="col-lg-6 tab-bg" ng-repeat="tab in tabs"
+                ng-class="{showActive:isActiveTab(tab.url)}"
+                ng-click="onClickTab(tab)">{{tab.title}}</li>
 
-<!--tab starts from here-->
-
-<div class="tab-content">
-    <!--start shift tab starts-->
-
-    <div id="start" class="tab-pane fade in active">
-        <table class="reports-table">
-            <tr>
-                <td>
-                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                    <p class="comment">
-                        No comments                                                </p><br>
-                    <p class="defect-img">
-                    </p>
-
-                </td>
-
-                <td>
-                    <span class="question-status pass-btn">Pass</span>                                            </td>
-            </tr>
-            <tr>
-                <td>
-                    <p class="question">Inspect windows  for cleanliness, broken glass and wores</p>
-
-                    <p class="comment">
-                        No comments                                                </p><br>
-                    <p class="defect-img">
-                    </p>
-
-                </td>
-
-                <td>
-                    <span class="question-status pass-btn">Pass</span>                                            </td>
-            </tr>
-            <tr>
-                <td>
-                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                    <p class="comment">
-                        No comments                                                </p><br>
-                    <p class="defect-img">
-                    </p>
-
-                </td>
-
-                <td>
-                    <span class="question-status pass-btn">Pass</span>                                            </td>
-            </tr><tr>
-            <td>
-                <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                <p class="comment">
-                    No comments                                                </p><br>
-                <p class="defect-img">
-                </p>
-
-            </td>
-
-            <td>
-                <span class="question-status pass-btn">Pass</span>                                            </td>
-        </tr>
-            <tr>
-                <td>
-                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                    <p class="comment">
-                        No comments                                                </p><br>
-                    <p class="defect-img">
-                    </p>
-
-                </td>
-
-                <td>
-                    <span class="question-status pass-btn">Pass</span>                                            </td>
-            </tr><tr>
-            <td>
-                <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                <p class="comment">
-                    No comments                                                </p><br>
-                <p class="defect-img">
-                </p>
-
-            </td>
-
-            <td>
-                <span class="question-status pass-btn">Pass</span>                                            </td>
-        </tr>
-</table>
-
-    </div>
-    <!--start shift tab ends -->
-
-
-    <!--end shift tab starts -->
-    <div id="end" class="tab-pane fade">
-
-        <table class="reports-table">
-            <tr>
-                <td>
-                    <p class="question">Inspect windows  for cleanliness, broken glass and wores</p>
-
-                    <p class="comment">
-                        No comments                                                </p><br>
-                    <p class="defect-img">
-                    </p>
-
-                </td>
-
-                <td>
-                    <span class="question-status pass-btn">Pass</span>                                            </td>
-            </tr>
-            <tr>
-                <td>
-                    <p class="question">Inspect windows  for cleanliness, broken glass and wores</p>
-
-                    <p class="comment">
-                        No comments                                                </p><br>
-                    <p class="defect-img">
-                    </p>
-
-                </td>
-
-                <td>
-                    <span class="question-status pass-btn">Pass</span>                                            </td>
-            </tr>
-            <tr>
-                <td>
-                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                    <p class="comment">
-                        No comments                                                </p><br>
-                    <p class="defect-img">
-                    </p>
-
-                </td>
-
-                <td>
-                    <span class="question-status pass-btn">Pass</span>                                            </td>
-            </tr><tr>
-            <td>
-                <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                <p class="comment">
-                    No comments                                                </p><br>
-                <p class="defect-img">
-                </p>
-
-            </td>
-
-            <td>
-                <span class="question-status pass-btn">Pass</span>                                            </td>
-        </tr>
-            <tr>
-                <td>
-                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                    <p class="comment">
-                        No comments                                                </p><br>
-                    <p class="defect-img">
-                    </p>
-
-                </td>
-
-                <td>
-                    <span class="question-status pass-btn">Pass</span>                                            </td>
-            </tr><tr>
-            <td>
-                <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                <p class="comment">
-                    No comments                                                </p><br>
-                <p class="defect-img">
-                </p>
-
-            </td>
-
-            <td>
-                <span class="question-status pass-btn">Pass</span>                                            </td>
-        </tr>
-        </table>
-
+        </ul>
+        <div id="mainView">
+            <div ng-include="currentTab"></div>
         </div>
-    <!--end shift tab ends -->
+    </div>
+    <script type="text/ng-template" id="one.tpl.html">
+        <div id="viewOne" class="tab-pane fade in active">
+                <table class="reports-table">
+                    <tr>
+                        <td>
+                            <p class="question">Inspect windows  for clean</p>
 
-</div>
+                            <p class="comment">
+                                No comments                                                </p><br>
+                            <p class="defect-img">
+                            </p>
+
+                        </td>
+
+                        <td>
+                            <span class="question-status pass-btn">Pass</span>                                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="question">Inspect windows  for cleanliness, broken glass and wores</p>
+
+                            <p class="comment">
+                                No comments                                                </p><br>
+                            <p class="defect-img">
+                            </p>
+
+                        </td>
+
+                        <td>
+                            <span class="question-status pass-btn">Pass</span>                                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
+
+                            <p class="comment">
+                                No comments                                                </p><br>
+                            <p class="defect-img">
+                            </p>
+
+                        </td>
+
+                        <td>
+                            <span class="question-status pass-btn">Pass</span>                                            </td>
+                    </tr><tr>
+                    <td>
+                        <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
+
+                        <p class="comment">
+                            No comments                                                </p><br>
+                        <p class="defect-img">
+                        </p>
+
+                    </td>
+
+                    <td>
+                        <span class="question-status pass-btn">Pass</span>                                            </td>
+                </tr>
+                    <tr>
+                        <td>
+                            <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
+
+                            <p class="comment">
+                                No comments                                                </p><br>
+                            <p class="defect-img">
+                            </p>
+
+                        </td>
+
+                        <td>
+                            <span class="question-status pass-btn">Pass</span>                                            </td>
+                    </tr><tr>
+                    <td>
+                        <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
+
+                        <p class="comment">
+                            No comments                                                </p><br>
+                        <p class="defect-img">
+                        </p>
+
+                    </td>
+
+                    <td>
+                        <span class="question-status pass-btn">Pass</span>                                            </td>
+                </tr>
+                </table>
+
+            </div>
 
 
+    </script>
+
+    <script type="text/ng-template" id="two.tpl.html">
+        <div id="viewTwo">
+            <table class="reports-table">
+                <tr>
+                    <td>
+                        <p class="question">Inspect windows</p>
+
+                        <p class="comment">
+                            No comments                                                </p><br>
+                        <p class="defect-img">
+                        </p>
+
+                    </td>
+
+                    <td>
+                        <span class="question-status pass-btn">Pass</span>                                            </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="question">Inspect windows  for cleanliness, broken glass and wores</p>
+
+                        <p class="comment">
+                            No comments                                                </p><br>
+                        <p class="defect-img">
+                        </p>
+
+                    </td>
+
+                    <td>
+                        <span class="question-status pass-btn">Pass</span>                                            </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
+
+                        <p class="comment">
+                            No comments                                                </p><br>
+                        <p class="defect-img">
+                        </p>
+
+                    </td>
+
+                    <td>
+                        <span class="question-status pass-btn">Pass</span>                                            </td>
+                </tr><tr>
+                <td>
+                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
+
+                    <p class="comment">
+                        No comments                                                </p><br>
+                    <p class="defect-img">
+                    </p>
+
+                </td>
+
+                <td>
+                    <span class="question-status pass-btn">Pass</span>                                            </td>
+            </tr>
+                <tr>
+                    <td>
+                        <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
+
+                        <p class="comment">
+                            No comments                                                </p><br>
+                        <p class="defect-img">
+                        </p>
+
+                    </td>
+
+                    <td>
+                        <span class="question-status pass-btn">Pass</span>                                            </td>
+                </tr><tr>
+                <td>
+                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
+
+                    <p class="comment">
+                        No comments                                                </p><br>
+                    <p class="defect-img">
+                    </p>
+
+                </td>
+
+                <td>
+                    <span class="question-status pass-btn">Pass</span>                                            </td>
+            </tr>
+            </table>
+        </div>
+    </script>
 </div>
-</div>
-</div>
-</div>
+
 </div>
 </div>
 

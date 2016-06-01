@@ -9,6 +9,26 @@ angular.module('barrick')
 
         $scope.elements = [];
 
+        $scope.tabs = [{
+            title: 'Start Shift',
+            url: 'one.tpl.html'
+        }, {
+            title: 'End Shift',
+            url: 'two.tpl.html'
+        }];
+
+        $scope.currentTab = 'one.tpl.html';
+
+        $scope.onClickTab = function (tab) {
+            $scope.currentTab = tab.url;
+        }
+
+        $scope.isActiveTab = function(tabUrl) {
+            console.log($scope.currentTab);
+            return tabUrl == $scope.currentTab;
+        }
+
+
         var type = 'truck';
 
         httpService.getAllRequest(type)
