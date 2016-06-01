@@ -282,7 +282,7 @@ RecordModel.getAllMachines = function(callback) {
 };
 
 RecordModel.getInspectionDetails = function(machine,callback) {
-    var statement = "SELECT docs, meta(docs).id AS _id FROM `" + config.couchbase.bucket + "` AS docs WHERE type='form' and machine._id='"+machine+"'" +
+    var statement = "SELECT docs, meta(docs).id AS _id FROM `" + config.couchbase.bucket + "` AS docs WHERE type='form' and meta(docs).id NOT LIKE '_sync:rev%' and machine._id='"+machine+"'" +
         " ORDER BY createdAt desc";
     var query = N1qlQuery.fromString(statement);//.consistency(N1qlQuery.Consistency.REQUEST_PLUS);
     console.log(query)

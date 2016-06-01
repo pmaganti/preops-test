@@ -74,7 +74,8 @@
                             </table>
                         </div>
                     </div>
-
+              <div>
+                  <div id="viewTwo">
                     <div id="reports-gen">
                         <div class="col-md-9 machine-data" name="16" objid="UGPvAhTXbQ" date="May 31, 2016">
                             <div class="row forms-desc">
@@ -122,7 +123,7 @@
                                     </div>
                                 </div>
                                 <script type="text/ng-template" id="one.tpl.html">
-                                    <div id="viewOne" class="tab-pane fade in active">
+                               <div class="tab-scroll1">  <div id="viewOne" class="tab-pane fade in active">
                                         <table class="reports-table">
                                             <tr ng-repeat="element in elements[mIndex].docs.startOfShift.questions">
                                                 <td>
@@ -154,12 +155,13 @@
                                         </table>
 
                                     </div>
-
+</div>
 
                                 </script>
 
                                 <script type="text/ng-template" id="two.tpl.html">
-                                    <div id="viewTwo">
+                                    <div class="tab-scroll1">
+                                   <div id="viewTwo">
                                         <table class="reports-table">
                                             <tr ng-repeat="element in elements[mIndex].docs.endOfShift.questions">
                                                 <td>
@@ -188,6 +190,7 @@
 
                                         </table>
                                     </div>
+                                    </div>
                                 </script>
                             </div>
 
@@ -196,7 +199,7 @@
 
                 </div>
 
-
+</div>
             </div>
         </div>
     </div>
