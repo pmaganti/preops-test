@@ -5,7 +5,7 @@
 angular.module('barrick')
     .config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise("machines");
+        $urlRouterProvider.otherwise("login");
 
         $stateProvider
 
