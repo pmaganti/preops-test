@@ -4,7 +4,9 @@
 
 angular.module('barrick')
     .config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise("login");
+
+        $urlRouterProvider.otherwise("machines");
+
         $stateProvider
 
             .state("login", {
@@ -19,7 +21,7 @@ angular.module('barrick')
                 controller: 'MachineController'
             })
             .state("details", {
-                "url": "/details",
+                "url": "/details/:machine",
                 templateUrl: 'templates/details.html',
                 controller: 'InspectionDetailController'
             })

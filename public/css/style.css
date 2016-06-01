@@ -729,7 +729,7 @@ a{
 
 .machine-list img {
     width: 100%;
-    max-width: 90px;
+    max-width: 140px;
 }
 
 .machine-block-root {
@@ -750,7 +750,9 @@ a{
 .machine-block {
     padding: 5px;
     border: 1px solid #C5C5C5;
+    border: 0;
 }
+
 
 .machine-block hr {
     margin-top: 1px !important;
@@ -1065,4 +1067,9 @@ padding-right: 0;
     cursor: pointer;
 
 
+}
+
+.center-no-border {
+    border:0 !important;
+    text-align: center;
 }

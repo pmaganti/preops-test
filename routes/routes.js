@@ -167,9 +167,19 @@ var appRouter = function (app) {
     });
 
     app.get("/api/get/allMD", function (req, res) {
-        console.log("test")
+
         // var type = req.params.type;
         RecordModel.getAllMD(function (error, result) {
+            if (error) {
+                return res.status(400).send(error);
+            }
+            res.send(result);
+        });
+    });
+
+    app.get("/api/getInspectionDetails/:id", function (req, res) {
+        var machineId = req.params.id;
+        RecordModel.getInspectionDetails(machineId,function (error, result) {
             if (error) {
                 return res.status(400).send(error);
             }
@@ -189,6 +199,18 @@ var appRouter = function (app) {
             res.send(result);
         });
     });
+
+    app.get("/api/getAllMachines", function (req, res) {
+
+        RecordModel.getAllMachines(function (error, result) {
+            if (error) {
+                return res.status(400).send(error);
+            }
+            res.send(result);
+        });
+    });
+
+
 
     app.get("/api/getMachineParking", function (req, res) {
 

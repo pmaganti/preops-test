@@ -1,316 +1,206 @@
 <div class="container">
-<div class="row">
-<div class="side-menu hidden-xs hidden-sm hidden-md hidden-lg">
+    <div class="row">
+        <div class="side-menu hidden-xs hidden-sm hidden-md hidden-lg">
 
-    <nav class="navbar navbar-default" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <div class="brand-wrapper">
-                <!-- Hamburger -->
-                <button type="button" class="navbar-toggle">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+            <nav class="navbar navbar-default" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <div class="brand-wrapper">
+                        <!-- Hamburger -->
+                        <button type="button" class="navbar-toggle">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Main Menu -->
+                <div class="side-menu-container">
+                    <ul class="nav navbar-nav">
+                        <li class="to-implement"><a href="#"><img src="/img/plus_icon.png"
+                                                                  pagespeed_url_hash="856983588"></a></li>
+                        <!--                        <li class="to-implement" id="user"><a href="#"><img src="-->
+                        <!--/img/user_icon.png"></a></li>-->
+                        <li id="user"><a href="/user"><img src="/img/user_icon.png" pagespeed_url_hash="2359760963"></a>
+                        </li>
+                        <li id="machine"><a href="/machines"><img src="/img/machine_icon.png"
+                                                                  pagespeed_url_hash="3319675097"></a></li>
+                        <li id="reports"><a href="/reports"><img src="/img/reports_icon.png"
+                                                                 pagespeed_url_hash="617203413"></a></li>
+                        <li class="to-implement"><a href="#"><img src="/img/settings_icon.png"
+                                                                  pagespeed_url_hash="3006117583"></a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>
+
+        </div>
+        <div class="side-body">
+            <div class="home-bg">
+                <div class="row dashboard-header">
+                    <div class="col-md-6">
+                        <img class="logo-dashboard" src="images/logo.png">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="user-info right_">
+                            <p class="right_">Hi Admin<span class="word-seperator"></span>
+                                <a href ui-sref="login"><span class="white">Sign out</span></a></p>
+
+                            <p class="dashboard-heading">Machine Details &amp; History</p><br>
+                            <a href="/reports/download" style="cursor: pointer; font-size: large;">Download Report</a>
+                            <br>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-12 machine-details">
+                    <div class="col-md-3 machine-history">
+                        <div class="scroll-table">
+                            <table class="history">
+                                <tbody>
+                                <tr>
+                                    <th>{{elements[mIndex].docs.machine.mSerial}}</th>
+                                    <th>History</th>
+                                </tr>
+
+                                <tr ng-repeat="element in elements">
+                                    <td><b><a ng-click="changeInspection($index)">{{element.docs.date}}</a></b></td>
+                                    <td><b><a ng-click="changeInspection($index)">{{element.docs.inspectedBy.firstname+'
+                                        '+element.docs.inspectedBy.lastname}}</a></b></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="reports-gen">
+                        <div class="col-md-9 machine-data" name="16" objid="UGPvAhTXbQ" date="May 31, 2016">
+                            <div class="row forms-desc">
+                                <div class="col-sm-2">
+                                    <img src="images/machines/4.png" pagespeed_url_hash="2330513245">
+                                </div>
+                                <div class="col-md-5 text-left">
+
+                                    <p class="serial-number yellow">{{elements[mIndex].docs.machine.mSerial}}</p>
+
+                                    <p class="forms-points">Start Time: <b>{{elements[mIndex].docs.startOfShift.startTime || '-'}}</b></p>
+                                    <p class="forms-points">End Time: <b>{{elements[mIndex].docs.endOfShift.endTime || '-'}}</b></p>
+                                    <p class="forms-points">Inspected On:
+                                        <b>{{elements[mIndex].docs.date}}</b></p>
+
+                                    <p class="forms-points">
+                                        Inspected By: <b>{{elements[mIndex].docs.inspectedBy.firstname+'
+                                        '+elements[mIndex].docs.inspectedBy.lastname}}</b></p>
+                                </div>
+                                <div class="col-md-5 text-left">
+                                    <p class="serial-number yellow">{{machineconclusion}}</p>
+                                    <p class="forms-points">Start Eng.Hrs: <b>{{elements[mIndex].docs.startOfShift.startEngHours || '-'}}</b></p>
+                                    <p class="forms-points">Eng Eng.Hrs: <b>{{elements[mIndex].docs.endOfShift.endEngHours || '-'}}</b></p>
+
+                                    <p class="forms-points">Supervisor Initials:
+                                        <b>{{elements[mIndex].docs.startOfShift.supervisorInitials|| '-'}}</b></p>
+
+                                    <p class="forms-points">
+                                        Location of unit at end shift: <b>{{elements[mIndex].docs.endOfShift.locationOfUnitAtEndOfShift||'-'}}</b></p>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <div id="tabs">
+                                    <ul class="pad-left-0">
+                                        <li class="col-lg-6 tab-bg" ng-repeat="tab in tabs"
+                                            ng-class="{showActive:isActiveTab(tab.url)}"
+                                            ng-click="onClickTab(tab)">{{tab.title}}
+                                        </li>
+
+                                    </ul>
+                                    <div id="mainView">
+                                        <div ng-include="currentTab"></div>
+                                    </div>
+                                </div>
+                                <script type="text/ng-template" id="one.tpl.html">
+                                    <div id="viewOne" class="tab-pane fade in active">
+                                        <table class="reports-table">
+                                            <tr ng-repeat="element in elements[mIndex].docs.startOfShift.questions">
+                                                <td>
+                                                    <p class="question">{{element.question}}</p>
+
+                                                    <!--  <p class="comment">
+                                                          No comments </p><br>-->
+
+                                                    <p class="defect-img">
+                                                    </p>
+
+                                                </td>
+
+                                                <td>
+                                                    <span ng-if="element.answer == 'YES'"
+                                                          class="question-status pass-btn">{{element.answer}}</span>
+                                                    <span ng-if="element.answer == 'NO'"
+                                                          class="question-status warning-btn">{{element.answer}}</span></td>
+
+
+                                                </tr>
+
+                                            <tr ng-show="!elements[mIndex].docs.startOfShift.questions.length">
+                                                <td class="center-no-border">
+                                                    <p class="question">Inspection not done for Start Shift</p>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+
+                                    </div>
+
+
+                                </script>
+
+                                <script type="text/ng-template" id="two.tpl.html">
+                                    <div id="viewTwo">
+                                        <table class="reports-table">
+                                            <tr ng-repeat="element in elements[mIndex].docs.endOfShift.questions">
+                                                <td>
+                                                    <p class="question">{{element.question}}</p>
+
+                                                    <!-- <p class="comment">
+                                                         No comments </p><br>-->
+
+                                                    <p class="defect-img">
+                                                    </p>
+
+                                                </td>
+
+                                                <td>
+                                                    <span ng-if="element.answer == 'YES'"
+                                                          class="question-status pass-btn">{{element.answer}}</span>
+                                                    <span ng-if="element.answer == 'NO'"
+                                                          class="question-status warning-btn">{{element.answer}}</span></td>
+                                            </tr>
+                                            <tr ng-show="!elements[mIndex].docs.endOfShift.questions.length">
+                                                <td class="center-no-border">
+                                                    <p class="question">Inspection not done for End Shift</p>
+
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </script>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
             </div>
         </div>
-        <!-- Main Menu -->
-        <div class="side-menu-container">
-            <ul class="nav navbar-nav">
-                <li class="to-implement"><a href="#"><img src="/img/plus_icon.png" pagespeed_url_hash="856983588"></a></li>
-                <!--                        <li class="to-implement" id="user"><a href="#"><img src="--><!--/img/user_icon.png"></a></li>-->
-                <li id="user"><a href="/user"><img src="/img/user_icon.png" pagespeed_url_hash="2359760963"></a></li>
-                <li id="machine"><a href="/machines"><img src="/img/machine_icon.png" pagespeed_url_hash="3319675097"></a></li>
-                <li id="reports"><a href="/reports"><img src="/img/reports_icon.png" pagespeed_url_hash="617203413"></a></li>
-                <li class="to-implement"><a href="#"><img src="/img/settings_icon.png" pagespeed_url_hash="3006117583"></a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </nav>
-
-</div>
-<div class="side-body">
-<div class="home-bg">
-<div class="row dashboard-header">
-    <div class="col-md-6">
-        <img class="logo-dashboard" src="images/logo.png">
     </div>
-    <div class="col-md-6">
-        <div class="user-info right_">
-            <p class="right_">Hi preOpsLogsAdmin<span class="word-seperator"></span>
-                <a href ui-sref="login"><span class="white">Sign out</span></a>                </p>
-            <p class="dashboard-heading">Machine Details &amp; History</p><br>
-             <a href="/reports/download" style="cursor: pointer; font-size: large;">Download Report</a> <br>
-        </div>
-
-    </div>
-</div>
-
-<div class="col-md-12 machine-details">
-<div class="col-md-3 machine-history">
-    <div class="scroll-table">
-    <table class="history">
-        <tbody><tr>
-            <th>16</th>
-            <th>History</th>
-        </tr>
-
-        <tr>
-            <td><b><a href="UGPvAhTXbQ">May 31, 2016</a></b></td>
-            <td><b><a href="UGPvAhTXbQ">sowjanya</a></b></td>
-        </tr>
-        <tr>
-            <td><a href="dtTbi7eTnB">May 31, 2016</a></td>
-            <td><a href="dtTbi7eTnB">sowjanya</a></td>
-        </tr></tbody></table>
-        </div>
-</div>
-
-<div id="reports-gen">
-<div class="col-md-9 machine-data" name="16" objid="UGPvAhTXbQ" date="May 31, 2016">
-<div class="row forms-desc">
-    <div class="col-sm-2">
-        <img src="images/machines/4.png" pagespeed_url_hash="2330513245">
-    </div>
-    <div class="col-md-5 text-left">
-
-        <p class="serial-number yellow">16</p>
-
-        <p class="forms-points">Machine Hours: <b>25</b></p>
-
-        <p class="forms-points">Inspected On:
-            <b>May 31, 2016</b></p>
-
-        <p class="forms-points">
-            Inspected By: <b>sowjanya</b></p>
-    </div>
-    <div class="col-md-5">
-        <div class="forms-brief">
-            <h3 class="yellow">Skid Steers</h3>
-
-            <ul class="values-circled">
-                <li>
-                    <div class="pass-btn">24</div>
-                </li>
-                <li>
-                    <div class="warning-btn">0</div>
-                </li>
-                <li>
-                    <div class="skip-btn">0</div>
-                </li>
-                <li>
-                    <div>0</div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-
-<div>
-    <div id="tabs">
-        <ul class="pad-left-0">
-            <li class="col-lg-6 tab-bg" ng-repeat="tab in tabs"
-                ng-class="{showActive:isActiveTab(tab.url)}"
-                ng-click="onClickTab(tab)">{{tab.title}}</li>
-
-        </ul>
-        <div id="mainView">
-            <div ng-include="currentTab"></div>
-        </div>
-    </div>
-    <script type="text/ng-template" id="one.tpl.html">
-        <div id="viewOne" class="tab-pane fade in active">
-                <table class="reports-table">
-                    <tr>
-                        <td>
-                            <p class="question">Inspect windows  for clean</p>
-
-                            <p class="comment">
-                                No comments                                                </p><br>
-                            <p class="defect-img">
-                            </p>
-
-                        </td>
-
-                        <td>
-                            <span class="question-status pass-btn">Pass</span>                                            </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p class="question">Inspect windows  for cleanliness, broken glass and wores</p>
-
-                            <p class="comment">
-                                No comments                                                </p><br>
-                            <p class="defect-img">
-                            </p>
-
-                        </td>
-
-                        <td>
-                            <span class="question-status pass-btn">Pass</span>                                            </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                            <p class="comment">
-                                No comments                                                </p><br>
-                            <p class="defect-img">
-                            </p>
-
-                        </td>
-
-                        <td>
-                            <span class="question-status pass-btn">Pass</span>                                            </td>
-                    </tr><tr>
-                    <td>
-                        <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                        <p class="comment">
-                            No comments                                                </p><br>
-                        <p class="defect-img">
-                        </p>
-
-                    </td>
-
-                    <td>
-                        <span class="question-status pass-btn">Pass</span>                                            </td>
-                </tr>
-                    <tr>
-                        <td>
-                            <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                            <p class="comment">
-                                No comments                                                </p><br>
-                            <p class="defect-img">
-                            </p>
-
-                        </td>
-
-                        <td>
-                            <span class="question-status pass-btn">Pass</span>                                            </td>
-                    </tr><tr>
-                    <td>
-                        <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                        <p class="comment">
-                            No comments                                                </p><br>
-                        <p class="defect-img">
-                        </p>
-
-                    </td>
-
-                    <td>
-                        <span class="question-status pass-btn">Pass</span>                                            </td>
-                </tr>
-                </table>
-
-            </div>
-
-
-    </script>
-
-    <script type="text/ng-template" id="two.tpl.html">
-        <div id="viewTwo">
-            <table class="reports-table">
-                <tr>
-                    <td>
-                        <p class="question">Inspect windows</p>
-
-                        <p class="comment">
-                            No comments                                                </p><br>
-                        <p class="defect-img">
-                        </p>
-
-                    </td>
-
-                    <td>
-                        <span class="question-status pass-btn">Pass</span>                                            </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="question">Inspect windows  for cleanliness, broken glass and wores</p>
-
-                        <p class="comment">
-                            No comments                                                </p><br>
-                        <p class="defect-img">
-                        </p>
-
-                    </td>
-
-                    <td>
-                        <span class="question-status pass-btn">Pass</span>                                            </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                        <p class="comment">
-                            No comments                                                </p><br>
-                        <p class="defect-img">
-                        </p>
-
-                    </td>
-
-                    <td>
-                        <span class="question-status pass-btn">Pass</span>                                            </td>
-                </tr><tr>
-                <td>
-                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                    <p class="comment">
-                        No comments                                                </p><br>
-                    <p class="defect-img">
-                    </p>
-
-                </td>
-
-                <td>
-                    <span class="question-status pass-btn">Pass</span>                                            </td>
-            </tr>
-                <tr>
-                    <td>
-                        <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                        <p class="comment">
-                            No comments                                                </p><br>
-                        <p class="defect-img">
-                        </p>
-
-                    </td>
-
-                    <td>
-                        <span class="question-status pass-btn">Pass</span>                                            </td>
-                </tr><tr>
-                <td>
-                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-                    <p class="comment">
-                        No comments                                                </p><br>
-                    <p class="defect-img">
-                    </p>
-
-                </td>
-
-                <td>
-                    <span class="question-status pass-btn">Pass</span>                                            </td>
-            </tr>
-            </table>
-        </div>
-    </script>
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-
-</div>
-</div>
-</div>
-<!-- /container -->
-<footer>
-    <p>©rapidBizApps LLC, All rights reserved.</p>
-</footer>
+    <!-- /container -->
+    <footer>
+        <p>©rapidBizApps LLC, All rights reserved.</p>
+    </footer>

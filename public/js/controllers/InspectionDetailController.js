@@ -5,8 +5,8 @@
 
 angular.module('barrick')
 
-    .controller('InspectionDetailController',['$scope','modalService','httpService',function($scope, modalService, httpService){
-
+    .controller('InspectionDetailController',['$scope','modalService','httpService','$stateParams',function($scope, modalService, httpService,$stateParams){
+        var machine = $stateParams.machine;console.log(machine)
         $scope.elements = [];
 
         $scope.tabs = [{
@@ -18,9 +18,12 @@ angular.module('barrick')
         }];
 
         $scope.currentTab = 'one.tpl.html';
+        $scope.currentTabTitle = 'Start Shift';
 
         $scope.onClickTab = function (tab) {
             $scope.currentTab = tab.url;
+            $scope.currentTabTitle = tab.title;
+            $scope.changeConclusion();
         }
 
         $scope.isActiveTab = function(tabUrl) {
@@ -28,12 +31,14 @@ angular.module('barrick')
             return tabUrl == $scope.currentTab;
         }
 
-
         var type = 'truck';
 
-        httpService.getAllRequest(type)
+        httpService.getInspectionDetails(machine)
             .then(function successCallback(response) {
+                $scope.mIndex = 0;
+
                 $scope.elements = response.data;
+                $scope.machineconclusion = $scope.elements[$scope.mIndex].docs.startOfShift.conclusion;
             }, function errorCallback(response) {
                 console.log("error",response);
             });
@@ -53,6 +58,25 @@ angular.module('barrick')
                     $scope.elements[index].docs = response.docs;
                 }
             });
+        };
+
+        $scope.changeInspection = function(index){
+
+            $scope.mIndex = index;
+            $scope.changeConclusion();
+
+
+        };
+        $scope.changeConclusion = function(){
+
+            var docs = $scope.elements[$scope.mIndex].docs;
+            if($scope.currentTabTitle == 'End Shift'){
+
+                $scope.machineconclusion = docs.endOfShift?docs.endOfShift.conclusion:"-";
+            }else{
+                $scope.machineconclusion = docs.startOfShift?docs.startOfShift.conclusion:"-";
+            }
+
         };
 
         $scope.addElement = function(){

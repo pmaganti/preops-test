@@ -253,4 +253,60 @@ RecordModel.getMachineParking = function(callback) {
     });
 };
 
+RecordModel.getAllMachines = function(callback) {
+    var statement = "SELECT docs, meta(docs).id AS _id FROM `" + config.couchbase.bucket + "` AS docs WHERE (type='loader' OR type='truck') and meta(docs).id NOT LIKE '_sync:rev%'" +
+        " ORDER BY docs desc";
+    var query = N1qlQuery.fromString(statement);//.consistency(N1qlQuery.Consistency.REQUEST_PLUS);
+    console.log(query)
+    db.query(query, function(error, result) {
+        if(error) {console.log(error)
+            return callback(error, null);
+        }
+
+        var null_callback = false;
+        var data = result.map(function(obj){
+            if(Object.keys(obj).length){
+                //===== changed code here ====
+                obj.rev = (obj.docs._sync !== undefined && obj.docs._sync !== null) ? obj.docs._sync.rev : '';
+                obj.time_saved = (obj.docs._sync !== undefined && obj.docs._sync !== null) ? obj.docs._sync.time_saved : '';
+                obj.docs.date = (obj.docs.createdAt !== undefined && obj.docs.createdAt !== null) ? moment(obj.docs.createdAt).format('MMM Do YYYY h:mm:ssa') : '';
+                delete obj.docs._sync;
+                return obj;
+            }else{
+                null_callback = true;
+            }
+            //return ;
+        });
+        callback(null, !null_callback?data:[]);
+    });
+};
+
+RecordModel.getInspectionDetails = function(machine,callback) {
+    var statement = "SELECT docs, meta(docs).id AS _id FROM `" + config.couchbase.bucket + "` AS docs WHERE type='form' and machine._id='"+machine+"'" +
+        " ORDER BY createdAt desc";
+    var query = N1qlQuery.fromString(statement);//.consistency(N1qlQuery.Consistency.REQUEST_PLUS);
+    console.log(query)
+    db.query(query, function(error, result) {
+        if(error) {console.log(error)
+            return callback(error, null);
+        }
+
+        var null_callback = false;
+        var data = result.map(function(obj){
+            if(Object.keys(obj).length){
+                //===== changed code here ====
+                obj.rev = (obj.docs._sync !== undefined && obj.docs._sync !== null) ? obj.docs._sync.rev : '';
+                obj.time_saved = (obj.docs._sync !== undefined && obj.docs._sync !== null) ? obj.docs._sync.time_saved : '';
+                obj.docs.date = (obj.docs.createdAt !== undefined && obj.docs.createdAt !== null) ? moment(obj.docs.createdAt).format('MMM Do YYYY h:mm:ssa') : '';
+                delete obj.docs._sync;
+                return obj;
+            }else{
+                null_callback = true;
+            }
+            //return ;
+        });
+        callback(null, !null_callback?data:[]);
+    });
+};
+
 module.exports = RecordModel;

@@ -11,8 +11,8 @@ angular.module('barrick')
 
         var type = 'truck';
 
-        httpService.getAllRequest(type)
-            .then(function successCallback(response) {
+        httpService.getAllMachines()
+            .then(function successCallback(response) {console.log(response.data)
                 $scope.elements = response.data;
             }, function errorCallback(response) {
                 console.log("error",response);

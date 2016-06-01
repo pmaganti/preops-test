@@ -62,6 +62,18 @@ angular.module('barrick')
                     method: 'GET',
                     url: url+'getMachineParking'
                 });
+            },
+            getAllMachines : function(){
+                return $http({
+                    method: 'GET',
+                    url: url+'getAllMachines'
+                });
+            },
+            getInspectionDetails : function(machine){
+                return $http({
+                    method: 'GET',
+                    url: url+'getInspectionDetails/'+machine
+                });
             }
         }
     }]);
