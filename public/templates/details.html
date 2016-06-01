@@ -47,7 +47,7 @@
                                 <a href ui-sref="login"><span class="white">Sign out</span></a></p>
 
                             <p class="dashboard-heading">Machine Detail History</p><br>
-                          <!--  <a href="/reports/download" style="cursor: pointer; font-size: large;">Download Report</a>-->
+                            <a ng-click="(elements[mIndex].docs.startOfShift.questions.length || elements[mIndex].docs.endOfShift.questions.length)?printReport(): alert('failed')" style="cursor: pointer; font-size: large;">Print Report</a>
                             <br>
                         </div>
 
@@ -80,7 +80,7 @@
                         <div class="col-md-9 machine-data" name="16" objid="UGPvAhTXbQ" date="May 31, 2016">
                             <div class="row forms-desc">
                                 <div class="col-sm-2">
-                                    <img src="images/machines/4.png" pagespeed_url_hash="2330513245">
+                                    <img src="{{'../images/disp_'+elements[mIndex].docs.machine.type+'.png'}}" pagespeed_url_hash="2330513245">
                                 </div>
                                 <div class="col-md-5 text-left">
 
@@ -139,9 +139,9 @@
 
                                                 <td>
                                                     <span ng-if="element.answer == 'YES'"
-                                                          class="question-status pass-btn">{{element.answer}}</span>
+                                                          class="question-status pass-btn">Ok</span>
                                                     <span ng-if="element.answer == 'NO'"
-                                                          class="question-status warning-btn">{{element.answer}}</span></td>
+                                                          class="question-status warning-btn">No</span></td>
 
 
                                                 </tr>
@@ -177,9 +177,9 @@
 
                                                 <td>
                                                     <span ng-if="element.answer == 'YES'"
-                                                          class="question-status pass-btn">{{element.answer}}</span>
+                                                          class="question-status pass-btn">Ok</span>
                                                     <span ng-if="element.answer == 'NO'"
-                                                          class="question-status warning-btn">{{element.answer}}</span></td>
+                                                          class="question-status warning-btn">No</span></td>
                                             </tr>
                                             <tr ng-show="!elements[mIndex].docs.endOfShift.questions.length">
                                                 <td class="center-no-border">
