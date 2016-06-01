@@ -1,31 +1,38 @@
-<div id="login-wrapper">
+<div class="login-bg">
+<div class="main-div"></div>
+<div class="main-wrapper">
+<div class="container">
+    <div class="row">
+        <div class="side-body">
+            <div class="home-bg">
+                <!--    <h1 class="home-heading">Design Blasting <br> Services, LLC</h1>-->
+                <img class="logo-home" src="images/logo.png">
 
-    <div class="container-fluid barrick-login-bg">
-    <div class="barrick-logo">
-        <img class="center" src="images/logo.png">
-    </div>
-
-    <div class="barrick-user">
-        <div class="container ">
-            <div class="barrick-login">
-                <!-- form start -->
-                <form ng-submit="login()">
-
-                    <div class="group">
-                        <input type="text" ng-model="loginUsername" placeholder="Username" class="focus-class barrick-userform" required></i>
-                    </div>
-                    <div class="group">
-                        <input type="password" ng-model="loginPassword" placeholder="Password" class="focus-class barrick-pswd" required></i>
-                    </div>
-                    <div class="group">
-                        <div class="text-center">
-                            <button type="submit" class="barrick-button-gradient button_styled btn">Login</button>
+                <form class="login-form form" method="post" action="/login/login">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><img src="images/username_icon.png" height="20px" pagespeed_url_hash="156866928"></div>
+                            <input type="text" name="username" placeholder="username" class="form-control" required="required">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><img src="images/password_icon.png" pagespeed_url_hash="3400773811"></div>
+                            <input type="password" name="password" placeholder="password" class="form-control" required="required">
+                        </div>
+                    </div>
+                    <div class="">
+                    <input type="submit" name="submit" class="login-submit" value="Signin">
+                        </div>
+
                 </form>
+
             </div>
+
         </div>
     </div>
+</div>
+<!-- /container -->
 
 </div>
-    </div>
+</div>
