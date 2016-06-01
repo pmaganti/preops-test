@@ -80,7 +80,7 @@
                         <div class="col-md-9 machine-data" name="16" objid="UGPvAhTXbQ" date="May 31, 2016">
                             <div class="row forms-desc">
                                 <div class="col-sm-2">
-                                    <img src="{{'../images/disp_'+elements[mIndex].docs.machine.type+'.png'}}" pagespeed_url_hash="2330513245">
+                                    <img src="{{'../images/disp_'+machine_type+'.png'}}" pagespeed_url_hash="2330513245">
                                 </div>
                                 <div class="col-md-5 text-left">
 
@@ -89,7 +89,7 @@
                                     <p class="forms-points">Start Time: <b>{{elements[mIndex].docs.startOfShift.startTime || '-'}}</b></p>
                                     <p class="forms-points">End Time: <b>{{elements[mIndex].docs.endOfShift.endTime || '-'}}</b></p>
                                     <p class="forms-points">Inspected On:
-                                        <b>{{elements[mIndex].docs.date}}</b></p>
+                                        <b>{{elements[mIndex].docs.date || '-'}}</b></p>
 
                                     <p class="forms-points">
                                         Inspected By: <b>{{elements[mIndex].docs.inspectedBy.firstname+'

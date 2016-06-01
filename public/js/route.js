@@ -21,7 +21,7 @@ angular.module('barrick')
                 controller: 'MachineController'
             })
             .state("details", {
-                "url": "/details/:machine",
+                "url": "/details/:machine_type/:machine",
                 templateUrl: 'templates/details.html',
                 controller: 'InspectionDetailController'
             })

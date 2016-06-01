@@ -6,7 +6,8 @@
 angular.module('barrick')
 
     .controller('InspectionDetailController',['$scope','modalService','httpService','$stateParams',function($scope, modalService, httpService,$stateParams){
-        var machine = $stateParams.machine;console.log(machine)
+        var machine = $stateParams.machine;
+        $scope.machine_type = $stateParams.machine_type;console.log( $stateParams.machine_type)
         $scope.elements = [];
 
         $scope.tabs = [{
@@ -68,14 +69,16 @@ angular.module('barrick')
 
         };
         $scope.changeConclusion = function(){
+           if($scope.elements[$scope.mIndex]){
+               var docs = $scope.elements[$scope.mIndex].docs;
+               if($scope.currentTabTitle == 'End Shift'){
 
-            var docs = $scope.elements[$scope.mIndex].docs;
-            if($scope.currentTabTitle == 'End Shift'){
+                   $scope.machineconclusion = (docs.endOfShift && docs.endOfShift.conclusion)?docs.endOfShift.conclusion:"-";
+               }else{
+                   $scope.machineconclusion = (docs.startOfShift && docs.startOfShift.conclusion)?docs.startOfShift.conclusion:"-";
+               }
+           }
 
-                $scope.machineconclusion = (docs.endOfShift && docs.endOfShift.conclusion)?docs.endOfShift.conclusion:"-";
-            }else{
-                $scope.machineconclusion = (docs.startOfShift && docs.startOfShift.conclusion)?docs.startOfShift.conclusion:"-";
-            }
 
         };
 
