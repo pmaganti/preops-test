@@ -5,7 +5,7 @@
 
 angular.module('barrick')
 
-    .controller('TruckController',['$scope','modalService','httpService',function($scope, modalService, httpService){
+    .controller('MachineController',['$scope','modalService','httpService',function($scope, modalService, httpService){
 
         $scope.elements = [];
 

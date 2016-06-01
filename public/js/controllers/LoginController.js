@@ -8,7 +8,11 @@ angular.module('LoginModule',[])
         $scope.login = function() {
             Auth.login( $scope.loginUsername, $scope.loginPassword);
             if(Auth.isAuthenticated()){
-                $location.path('/users')
+                console.log("---sucess---")
+                $location.path('/machines')
+            }else{
+                console.log("--fail");
+                $location.path('/login');
             }
         };
 

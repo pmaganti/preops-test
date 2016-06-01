@@ -8,23 +8,37 @@
                 <!--    <h1 class="home-heading">Design Blasting <br> Services, LLC</h1>-->
                 <img class="logo-home" src="images/logo.png">
 
-                <form class="login-form form" method="post" action="/login/login">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon"><img src="images/username_icon.png" height="20px" pagespeed_url_hash="156866928"></div>
-                            <input type="text" name="username" placeholder="username" class="form-control" required="required">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon"><img src="images/password_icon.png" pagespeed_url_hash="3400773811"></div>
-                            <input type="password" name="password" placeholder="password" class="form-control" required="required">
-                        </div>
-                    </div>
-                    <div class="">
-                    <input type="submit" name="submit" class="login-submit" value="Signin">
-                        </div>
 
+
+                <form class="login-form form" ng-submit="login()">
+
+
+
+
+                    <div class="form-group">
+                    <div class="input-group">
+                    <div class="input-group-addon"><img src="images/username_icon.png" height="20px"></div>
+                    <input type="text" ng-model="loginUsername" placeholder="username" class="form-control" required>
+                    </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                    <div class="input-group">
+                    <div class="input-group-addon"><img src="images/password_icon.png"></div>
+                    <input type="password"  ng-model="loginPassword" placeholder="password" class="form-control" required>
+                    </div>
+                    </div>
+
+
+                    <div class="group">
+                        <div class="text-center">
+                            <button type="submit" class="login-submit">Login</button>
+                        </div>
+                    </div>
                 </form>
 
             </div>

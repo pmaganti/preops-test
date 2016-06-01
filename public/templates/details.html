@@ -1,15 +1,3 @@
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <title>Barrick</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Le styles -->
-    <link href="/img/dbs_icon_black.png" rel="shortcut icon" type="image/vnd.microsoft.icon">
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css"  href="css/style.css">
-</head>
-<body>
 <div class="container">
 <div class="row">
 <div class="side-menu hidden-xs hidden-sm hidden-md hidden-lg">
@@ -49,7 +37,7 @@
     <div class="col-md-6">
         <div class="user-info right_">
             <p class="right_">Hi preOpsLogsAdmin<span class="word-seperator"></span>
-                <a href="/login/logout"><span class="white">Sign out</span></a>                </p>
+                <a href ui-sref="login"><span class="white">Sign out</span></a>                </p>
             <p class="dashboard-heading">Machine Details &amp; History</p><br>
              <a href="/reports/download" style="cursor: pointer; font-size: large;">Download Report</a> <br>
         </div>
@@ -116,381 +104,206 @@
         </div>
     </div>
 </div>
-<div class="row">
+<ul class="nav nav-tabs shift-tabs">
+    <li class="active shift-per"><a data-toggle="tab" href="#start">Start Shift</a></li>
+    <li class="shift-per"><a data-toggle="tab" href="#end">End Shift</a></li>
+</ul><div class="row">
 <div class="col-md-12">
 <div class="reports">
-<table class="reports-table">
 
-
-
-<tbody>
 <!--<tr><td colspan="2" style="background: #3767B1;"><p class="groupName">FROM THE GROUND</p></td></tr>-->
-<ul class="nav nav-pills shift-tabs">
-    <li class="active shift-per"><a href="#">Start Shift</a></li>
-    <li class="shift-per"><a href="#">End Shift</a></li>
-</ul>
-<tr>
-    <td>
-        <p class="question">Inspect tracks for excessive wear, tightness and mud/debris</p>
 
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
 
-    </td>
 
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
+<!--tab starts from here-->
 
-<tr>
-    <td>
-        <p class="question">Inspect bucket and attachment arms for excessive wear/damage</p>
+<div class="tab-content">
+    <!--start shift tab starts-->
 
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
+    <div id="start" class="tab-pane fade in active">
+        <table class="reports-table">
+            <tr>
+                <td>
+                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
 
-    </td>
+                    <p class="comment">
+                        No comments                                                </p><br>
+                    <p class="defect-img">
+                    </p>
 
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
+                </td>
 
-<tr>
-    <td>
-        <p class="question">Inspect bucket lift and tilt cylinders, lines and hoses for excessive wear/damage/leaks</p>
+                <td>
+                    <span class="question-status pass-btn">Pass</span>                                            </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="question">Inspect windows  for cleanliness, broken glass and wores</p>
 
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
+                    <p class="comment">
+                        No comments                                                </p><br>
+                    <p class="defect-img">
+                    </p>
 
-    </td>
+                </td>
 
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
+                <td>
+                    <span class="question-status pass-btn">Pass</span>                                            </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
 
-<tr>
-    <td>
-        <p class="question">Inspect frame arms  for excessive wear/damage</p>
+                    <p class="comment">
+                        No comments                                                </p><br>
+                    <p class="defect-img">
+                    </p>
 
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
+                </td>
 
-    </td>
+                <td>
+                    <span class="question-status pass-btn">Pass</span>                                            </td>
+            </tr><tr>
+            <td>
+                <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
 
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
+                <p class="comment">
+                    No comments                                                </p><br>
+                <p class="defect-img">
+                </p>
 
-<tr>
-    <td>
-        <p class="question">Inspect lights front and rear  for function, damage to lens, housings and wiring</p>
+            </td>
 
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
+            <td>
+                <span class="question-status pass-btn">Pass</span>                                            </td>
+        </tr>
+            <tr>
+                <td>
+                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
 
-    </td>
+                    <p class="comment">
+                        No comments                                                </p><br>
+                    <p class="defect-img">
+                    </p>
 
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
+                </td>
 
-<tr>
-    <td>
-        <p class="question">Inspect Confirm ALL fittings  for taking grease and that ALL joints show new grease</p>
+                <td>
+                    <span class="question-status pass-btn">Pass</span>                                            </td>
+            </tr><tr>
+            <td>
+                <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
 
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
+                <p class="comment">
+                    No comments                                                </p><br>
+                <p class="defect-img">
+                </p>
 
-    </td>
+            </td>
 
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect handholds and steps for condition/cleanliness</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect ROPS/FOPS for damage and loose mounting bolts</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr><td colspan="2" style="color:#000;background: #E9C96A;"><p class="groupName">ENGINE COMPARTMENT</p></td></tr>                                        <tr>
-    <td>
-        <p class="question">Inspect battery compartment for cleanliness and loose connections</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect engine oil  for fluid level</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect engine coolant  for fluid level</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect radiator for debris, damage and leaks</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect all hoses for cracks, wear spots and leaks</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect fuel filter/water separator for leaks/drain water if equipped</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect all belts  for tension, wear and cracks</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect air filter  for restriction</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect overall engine compartment   for trash, dirt buildup and leaks</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr><td colspan="2" style="background: #E9C96A;color:#000;"><p class="groupName">INSIDE THE CAB</p></td></tr>                                        <tr>
-    <td>
-        <p class="question">Inspect seat for adjustment and ability to reach controls</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect seat belt and seatbelt mount  for damage, wear and adjustment</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect horn, backup alarm and interior lights for Damage, Adjust For Best Visibility</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect cabin air filter for dirt/dust if equipped</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect gauges, indicators, switches and controls for damage/function</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect overall cab interior for cleanliness</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-<tr>
-    <td>
-        <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
-
-        <p class="comment">
-            No comments                                                </p><br>
-        <p class="defect-img">
-        </p>
-
-    </td>
-
-    <td>
-        <span class="question-status pass-btn">Pass</span>                                            </td>
-</tr>
-
-</tbody>
+            <td>
+                <span class="question-status pass-btn">Pass</span>                                            </td>
+        </tr>
 </table>
+
+    </div>
+    <!--start shift tab ends -->
+
+
+    <!--end shift tab starts -->
+    <div id="end" class="tab-pane fade">
+
+        <table class="reports-table">
+            <tr>
+                <td>
+                    <p class="question">Inspect windows  for cleanliness, broken glass and wores</p>
+
+                    <p class="comment">
+                        No comments                                                </p><br>
+                    <p class="defect-img">
+                    </p>
+
+                </td>
+
+                <td>
+                    <span class="question-status pass-btn">Pass</span>                                            </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="question">Inspect windows  for cleanliness, broken glass and wores</p>
+
+                    <p class="comment">
+                        No comments                                                </p><br>
+                    <p class="defect-img">
+                    </p>
+
+                </td>
+
+                <td>
+                    <span class="question-status pass-btn">Pass</span>                                            </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
+
+                    <p class="comment">
+                        No comments                                                </p><br>
+                    <p class="defect-img">
+                    </p>
+
+                </td>
+
+                <td>
+                    <span class="question-status pass-btn">Pass</span>                                            </td>
+            </tr><tr>
+            <td>
+                <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
+
+                <p class="comment">
+                    No comments                                                </p><br>
+                <p class="defect-img">
+                </p>
+
+            </td>
+
+            <td>
+                <span class="question-status pass-btn">Pass</span>                                            </td>
+        </tr>
+            <tr>
+                <td>
+                    <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
+
+                    <p class="comment">
+                        No comments                                                </p><br>
+                    <p class="defect-img">
+                    </p>
+
+                </td>
+
+                <td>
+                    <span class="question-status pass-btn">Pass</span>                                            </td>
+            </tr><tr>
+            <td>
+                <p class="question">Inspect windows  for cleanliness, broken glass and worn wiper blades</p>
+
+                <p class="comment">
+                    No comments                                                </p><br>
+                <p class="defect-img">
+                </p>
+
+            </td>
+
+            <td>
+                <span class="question-status pass-btn">Pass</span>                                            </td>
+        </tr>
+        </table>
+
+        </div>
+    <!--end shift tab ends -->
+
+</div>
+
+
 </div>
 </div>
 </div>
@@ -509,13 +322,3 @@
 <footer>
     <p>©rapidBizApps LLC, All rights reserved.</p>
 </footer>
-<div id="loader_overlay">
-    <!--            <img id="loader" src="--><!--/img/ajax_loader.gif">-->
-    <div id="loadingProgressG">
-        <div id="loadingProgressG_1" class="loadingProgressG">
-        </div>
-    </div>
-</div>
-
-
-</body></html>

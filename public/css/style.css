@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:700,400,300);
 body {
     font-family: 'Roboto', sans-serif;
-    margin-bottom: 90px;
+    /*margin-bottom: 90px;*/
     height: 100%;
     background-color: #242421!important;
     color:#fff!important;
@@ -425,9 +425,10 @@ input[name=username], input[name=password] {
 
 footer {
     bottom: 0;
-    position: absolute;
+    /*position: absolute;*/
     width: 100%;
     text-align: center;
+    margin-top: 50px;
 }
 
 .machine-data {
@@ -1023,7 +1024,8 @@ padding-right: 0;
 }
 .nav > li > a:hover, .nav > li > a:focus { background-color: #E9C96A;color: #000;}
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus,
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     background-color:#E9C96A ;color:#000;
 }
 .scroll-table{ width: 100%; overflow: auto; height: 82vh; }
@@ -1036,10 +1038,13 @@ padding-right: 0;
 .main-wrapper {
     position: relative;
     z-index: 1;
+    height: 100%;
+    width: 100%;
 }
 .login-bg {
     background:url("../images/home.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100%;
 }

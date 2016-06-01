@@ -4,7 +4,7 @@
 
 angular.module('barrick')
     .config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise("users");
+        $urlRouterProvider.otherwise("details");
         $stateProvider
 
             .state("login", {
@@ -18,7 +18,7 @@ angular.module('barrick')
                 templateUrl: 'templates/machines.html',
                 controller: 'MachineController'
             })
-            .state("opsDetails", {
+            .state("details", {
                 "url": "/details",
                 templateUrl: 'templates/details.html',
                 controller: 'InspectionDetailController'
@@ -27,15 +27,17 @@ angular.module('barrick')
      .run(['$rootScope','$location', 'Auth', function($rootScope, $location, Auth) {
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
             if(toState.redirectTo){
-                //event.preventDefault();
+                event.preventDefault();
                 $location.path('/login');
             }else {
                 if (!toState.public) {
-                    /*if (!Auth.isAuthenticated()) {
+                    if (!Auth.isAuthenticated()) {
                         event.preventDefault();
                         $location.path('/login');
-                    }*/
+                    }
                 }
             }
         });
     }]);
+
+
