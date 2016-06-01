@@ -38,7 +38,7 @@ angular.module('barrick')
                 $scope.mIndex = 0;
 
                 $scope.elements = response.data;
-                $scope.machineconclusion = $scope.elements[$scope.mIndex].docs.startOfShift.conclusion;
+                $scope.changeConclusion();
             }, function errorCallback(response) {
                 console.log("error",response);
             });
@@ -72,9 +72,9 @@ angular.module('barrick')
             var docs = $scope.elements[$scope.mIndex].docs;
             if($scope.currentTabTitle == 'End Shift'){
 
-                $scope.machineconclusion = docs.endOfShift?docs.endOfShift.conclusion:"-";
+                $scope.machineconclusion = (docs.endOfShift && docs.endOfShift.conclusion)?docs.endOfShift.conclusion:"-";
             }else{
-                $scope.machineconclusion = docs.startOfShift?docs.startOfShift.conclusion:"-";
+                $scope.machineconclusion = (docs.startOfShift && docs.startOfShift.conclusion)?docs.startOfShift.conclusion:"-";
             }
 
         };
